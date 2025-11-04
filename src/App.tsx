@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useKV } from '@github/spark/hooks'
 import { sevillaSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
 import { Progress } from '@/components/ui/progress'
@@ -7,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { MapPin, CheckCircle } from '@phosphor-icons/react'
 
 function App() {
-  const [visitedSites, setVisitedSites] = useKV<string[]>('visited-sites', [])
+  const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
 
   const visited = visitedSites || []
