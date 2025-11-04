@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { sevillaSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
+import { SiteListItem } from '@/components/SiteListItem'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, CheckCircle } from '@phosphor-icons/react'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { MapPin, CheckCircle, SquaresFour, ListBullets } from '@phosphor-icons/react'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   const visited = visitedSites
 
@@ -46,8 +49,9 @@ function App() {
           </p>
 
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-3">
-              <button
+            <div className="flex flex-wrap items-center gap-3 justify-between">
+              <div className="flex flex-wrap items-center gap-3">
+                <button
                 onClick={() => setFilter('all')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   filter === 'all'
@@ -78,6 +82,23 @@ function App() {
                 <CheckCircle weight="fill" className="inline w-4 h-4 mr-1.5" />
                 Visited ({visitedCount})
               </button>
+              </div>
+
+              <ToggleGroup
+                type="single"
+                value={viewMode}
+                onValueChange={(value) => {
+                  if (value) setViewMode(value as 'grid' | 'list')
+                }}
+                variant="outline"
+              >
+                <ToggleGroupItem value="grid" aria-label="Grid view">
+                  <SquaresFour className="w-4 h-4" />
+                </ToggleGroupItem>
+                <ToggleGroupItem value="list" aria-label="List view">
+                  <ListBullets className="w-4 h-4" />
+                </ToggleGroupItem>
+              </ToggleGroup>
             </div>
 
             {visitedCount > 0 && (
@@ -104,10 +125,21 @@ function App() {
                 : 'No sites match your filter.'}
             </p>
           </div>
-        ) : (
+        ) : viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredSites.map((site) => (
               <SiteCard
+                key={site.id}
+                site={site}
+                isVisited={visited.includes(site.id)}
+                onToggleVisit={toggleVisit}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {filteredSites.map((site) => (
+              <SiteListItem
                 key={site.id}
                 site={site}
                 isVisited={visited.includes(site.id)}
