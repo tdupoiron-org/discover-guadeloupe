@@ -4,6 +4,7 @@ import { SiteCard } from '@/components/SiteCard'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, CheckCircle } from '@phosphor-icons/react'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
@@ -34,11 +35,14 @@ function App() {
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-8 md:px-8 md:py-12">
         <header className="mb-8 md:mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <MapPin weight="fill" className="w-10 h-10 text-primary" />
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Discover Sevilla
-            </h1>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <MapPin weight="fill" className="w-10 h-10 text-primary" />
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                Discover Sevilla
+              </h1>
+            </div>
+            <ThemeToggle />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6">
             Welcome to your personal guide for exploring Sevilla's most captivating sites. 
