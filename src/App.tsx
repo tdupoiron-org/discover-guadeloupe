@@ -10,7 +10,7 @@ import { useOnboarding } from '@/hooks/use-onboarding'
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
-  const { showOnboarding, completeOnboarding, skipOnboarding } = useOnboarding()
+  const { showOnboarding, completeOnboarding } = useOnboarding()
 
   const visited = visitedSites
 
@@ -38,7 +38,7 @@ function App() {
       <Onboarding
         open={showOnboarding}
         onComplete={completeOnboarding}
-        onSkip={skipOnboarding}
+        onSkip={completeOnboarding}
       />
       
       <div className="min-h-screen bg-background">

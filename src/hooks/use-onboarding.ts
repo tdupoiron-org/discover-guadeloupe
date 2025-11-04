@@ -21,10 +21,6 @@ export function useOnboarding() {
     setShowOnboarding(false)
   }
 
-  const skipOnboarding = () => {
-    completeOnboarding()
-  }
-
   const resetOnboarding = () => {
     localStorage.removeItem(ONBOARDING_STORAGE_KEY)
     setShowOnboarding(true)
@@ -34,7 +30,6 @@ export function useOnboarding() {
     showOnboarding,
     isLoading,
     completeOnboarding,
-    skipOnboarding,
     resetOnboarding
   }
 }

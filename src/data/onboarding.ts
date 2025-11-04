@@ -1,10 +1,10 @@
-import { MapPin, CheckCircle, Funnel, Sparkle } from '@phosphor-icons/react'
+import { MapPin, CheckCircle, Funnel, Sparkle, Icon } from '@phosphor-icons/react'
 
 export interface OnboardingStep {
   id: string
   title: string
   description: string
-  icon: any
+  icon: Icon
   image?: string
 }
 
