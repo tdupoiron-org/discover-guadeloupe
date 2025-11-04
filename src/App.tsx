@@ -9,15 +9,14 @@ function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
 
-  const visited = visitedSites || []
+  const visited = visitedSites
 
   const toggleVisit = (siteId: string) => {
     setVisitedSites((current) => {
-      const currentVisited = current || []
-      if (currentVisited.includes(siteId)) {
-        return currentVisited.filter(id => id !== siteId)
+      if (current.includes(siteId)) {
+        return current.filter(id => id !== siteId)
       }
-      return [...currentVisited, siteId]
+      return [...current, siteId]
     })
   }
 
