@@ -72,8 +72,14 @@ export function OnboardingDialog({ open, onComplete }: OnboardingDialogProps) {
   const step = onboardingSteps[currentStep]
   const StepIcon = step.icon
   
+  const handleDialogOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      handleSkip()
+    }
+  }
+  
   return (
-    <Dialog open={open} onOpenChange={(isOpen) => !isOpen && handleSkip()}>
+    <Dialog open={open} onOpenChange={handleDialogOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <div className="flex justify-center mb-4">

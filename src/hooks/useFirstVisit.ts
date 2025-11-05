@@ -7,18 +7,29 @@ export function useFirstVisit() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem(FIRST_VISIT_KEY)
-    
-    if (!hasVisited) {
-      setIsFirstVisit(true)
+    try {
+      const hasVisited = localStorage.getItem(FIRST_VISIT_KEY)
+      
+      if (!hasVisited) {
+        setIsFirstVisit(true)
+      }
+    } catch (error) {
+      // localStorage may not be available in some environments (SSR, private browsing)
+      console.warn('localStorage not available:', error)
     }
     
     setIsLoading(false)
   }, [])
 
   const markAsVisited = () => {
-    localStorage.setItem(FIRST_VISIT_KEY, 'true')
-    setIsFirstVisit(false)
+    try {
+      localStorage.setItem(FIRST_VISIT_KEY, 'true')
+      setIsFirstVisit(false)
+    } catch (error) {
+      // localStorage may not be available in some environments
+      console.warn('Could not save to localStorage:', error)
+      setIsFirstVisit(false)
+    }
   }
 
   return { isFirstVisit, isLoading, markAsVisited }
