@@ -19,8 +19,8 @@ test.describe('Discover Sevilla App', () => {
     
     // Check that at least one site card is displayed
     const siteCards = page.locator('[data-testid="site-card"]');
-    await expect(siteCards).toHaveCount(await siteCards.count());
-    expect(await siteCards.count()).toBeGreaterThan(0);
+    const count = await siteCards.count();
+    expect(count).toBeGreaterThan(0);
   });
 
   test('should allow toggling visit status', async ({ page }) => {
@@ -36,26 +36,22 @@ test.describe('Discover Sevilla App', () => {
     // Click to mark as visited
     await firstCheckbox.click();
     
-    // Wait for state to update
-    await page.waitForTimeout(500);
+    // Wait for the progress badge to appear (appears when visitedCount > 0)
+    await page.waitForSelector('text=/\\d+ of \\d+/', { timeout: 5000 });
     
-    // The progress badge should now appear (only shows when visitedCount > 0)
+    // The progress badge should now appear
     const progressBadge = page.locator('text=/\\d+ of \\d+/');
     await expect(progressBadge).toBeVisible();
     
-    // Verify we can see the visited state
+    // Verify we can see the visited state with count
     const badgeText = await progressBadge.textContent();
     expect(badgeText).toMatch(/\d+ of \d+/);
     
-    // Click again to unmark
-    await firstCheckbox.click();
-    
-    // Wait for state to update
-    await page.waitForTimeout(500);
-    
-    // The badge might disappear if count goes back to 0
-    // Just verify the click action works
-    expect(true).toBe(true);
+    // Extract the first number (visited count) and verify it's greater than 0
+    const match = badgeText?.match(/(\d+) of (\d+)/);
+    expect(match).toBeTruthy();
+    const visitedCount = match ? parseInt(match[1]) : 0;
+    expect(visitedCount).toBeGreaterThan(0);
   });
 
   test('should update progress when sites are visited', async ({ page }) => {
@@ -68,22 +64,19 @@ test.describe('Discover Sevilla App', () => {
     const firstCheckbox = page.locator('[data-testid="visit-checkbox"]').first();
     await firstCheckbox.click();
     
-    // Wait for state to update
-    await page.waitForTimeout(500);
-    
-    // Now the progress indicator should be visible (only shows when visitedCount > 0)
-    await page.waitForSelector('text=/\\d+ of \\d+/', { timeout: 10000 });
+    // Wait for the progress badge to appear
+    const progressBadge = page.locator('text=/\\d+ of \\d+/');
+    await progressBadge.waitFor({ state: 'visible', timeout: 5000 });
     
     // Get initial progress text
-    const progressBadge = page.locator('text=/\\d+ of \\d+/');
     const initialText = await progressBadge.textContent();
     
     // Mark another site as visited
     const secondCheckbox = page.locator('[data-testid="visit-checkbox"]').nth(1);
     await secondCheckbox.click();
     
-    // Wait for state to update
-    await page.waitForTimeout(500);
+    // Wait for the text to change using Playwright's built-in waiting
+    await expect(progressBadge).not.toHaveText(initialText || '');
     
     // Check that progress text changed
     const newText = await progressBadge.textContent();
@@ -100,15 +93,15 @@ test.describe('Discover Sevilla App', () => {
     const firstCheckbox = page.locator('[data-testid="visit-checkbox"]').first();
     await firstCheckbox.click();
     
-    // Wait for state update
-    await page.waitForTimeout(500);
+    // Wait for progress badge to appear
+    await page.waitForSelector('text=/\\d+ of \\d+/', { timeout: 5000 });
     
     // Click the "Visited" filter button
     const visitedButton = page.locator('button:has-text("Visited")');
     await visitedButton.click();
     
-    // Wait for filter to apply
-    await page.waitForTimeout(500);
+    // Wait for the button to be active (has bg-primary class)
+    await expect(visitedButton).toHaveClass(/bg-primary/);
     
     // Verify that only visited sites are shown
     const visibleCards = page.locator('[data-testid="site-card"]');
@@ -140,12 +133,16 @@ test.describe('Discover Sevilla App', () => {
     
     const firstCard = page.locator('[data-testid="site-card"]').first();
     
-    // Check for metadata elements (these are common in the PRD)
-    // We'll look for any of these indicators
-    const hasMetadata = await firstCard.locator('text=/\\d+[- ]?\\d*\\s*(min|hour|hrs?)/i').count() > 0 ||
-                        await firstCard.locator('[class*="crowd"]').count() > 0 ||
-                        await firstCard.locator('[class*="rating"]').count() > 0;
+    // Check for duration information (e.g., "2-3 hours")
+    const hasDuration = await firstCard.locator('text=/\\d+[- ]?\\d*\\s*(min|hour|hrs?)/i').count() > 0;
+    expect(hasDuration).toBe(true);
     
-    expect(hasMetadata || await firstCard.textContent()).toBeTruthy();
+    // Check for rating (star icon and number)
+    const hasRating = await firstCard.locator('text=/\\d+\\.\\d+/').count() > 0;
+    expect(hasRating).toBe(true);
+    
+    // Check for crowd level badge (high/medium/low)
+    const hasCrowdLevel = await firstCard.locator('text=/high|medium|low/i').count() > 0;
+    expect(hasCrowdLevel).toBe(true);
   });
 });
