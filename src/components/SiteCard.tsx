@@ -39,6 +39,7 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
 
   return (
     <Card 
+      data-testid="site-card"
       className={cn(
         "group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1",
         isVisited && "opacity-60"
@@ -94,6 +95,7 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
             onClick={() => onToggleVisit(site.id)}
             className="flex-shrink-0 mt-1 hover:scale-110 transition-transform"
             aria-label={isVisited ? 'Mark as not visited' : 'Mark as visited'}
+            data-testid="visit-checkbox"
           >
             <Checkbox 
               checked={isVisited}
