@@ -23,13 +23,10 @@ function App() {
 
   // Sort sites by popularity: must-see first, then popular, then hidden-gem
   // Ordenar sitios por popularidad: imprescindibles primero, luego populares, luego joyas ocultas
-  const getPopularityOrder = (popularity: Site['popularity']): number => {
-    const orderMap: Record<Site['popularity'], number> = {
-      'must-see': 1,
-      'popular': 2,
-      'hidden-gem': 3
-    }
-    return orderMap[popularity]
+  const popularityOrder: Record<Site['popularity'], number> = {
+    'must-see': 1,
+    'popular': 2,
+    'hidden-gem': 3
   }
   
   const filteredSites = sevillaSites
@@ -38,7 +35,7 @@ function App() {
       if (filter === 'unvisited') return !visited.includes(site.id)
       return true
     })
-    .sort((a, b) => getPopularityOrder(a.popularity) - getPopularityOrder(b.popularity))
+    .sort((a, b) => popularityOrder[a.popularity] - popularityOrder[b.popularity])
 
   const visitedCount = visited.length
   const totalCount = sevillaSites.length
