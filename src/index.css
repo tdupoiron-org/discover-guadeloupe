@@ -15,34 +15,35 @@
   }
 }
 
+/* AXA Brand Colors - Professional Blue and White / Colores de marca AXA - Azul profesional y blanco */
 :root {
-  --background: oklch(0.96 0.02 85);
-  --foreground: oklch(0.25 0.01 35);
+  --background: oklch(0.98 0.005 240); /* Clean white with subtle blue tint / Blanco limpio con tinte azul sutil */
+  --foreground: oklch(0.25 0.02 240); /* Deep blue-gray for text / Azul-gris oscuro para texto */
 
-  --card: oklch(0.99 0 0);
-  --card-foreground: oklch(0.25 0.01 35);
+  --card: oklch(1 0 0); /* Pure white cards / Tarjetas blanco puro */
+  --card-foreground: oklch(0.25 0.02 240);
 
-  --popover: oklch(0.99 0 0);
-  --popover-foreground: oklch(0.25 0.01 35);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.02 240);
 
-  --primary: oklch(0.62 0.15 35);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.45 0.15 250); /* AXA Professional Blue / Azul profesional AXA */
+  --primary-foreground: oklch(1 0 0); /* White text on blue / Texto blanco sobre azul */
 
-  --secondary: oklch(0.90 0.05 35);
-  --secondary-foreground: oklch(0.25 0.01 35);
+  --secondary: oklch(0.92 0.02 240); /* Light blue-gray / Azul-gris claro */
+  --secondary-foreground: oklch(0.25 0.02 240);
 
-  --muted: oklch(0.92 0.02 85);
-  --muted-foreground: oklch(0.50 0.01 35);
+  --muted: oklch(0.95 0.01 240); /* Very light blue-gray / Azul-gris muy claro */
+  --muted-foreground: oklch(0.50 0.02 240);
 
-  --accent: oklch(0.75 0.18 60);
-  --accent-foreground: oklch(0.15 0 0);
+  --accent: oklch(0.55 0.18 240); /* Bright blue accent / Acento azul brillante */
+  --accent-foreground: oklch(1 0 0); /* White text on accent / Texto blanco sobre acento */
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.62 0.15 35);
+  --border: oklch(0.90 0.01 240); /* Subtle blue-gray border / Borde azul-gris sutil */
+  --input: oklch(0.90 0.01 240);
+  --ring: oklch(0.45 0.15 250); /* Focus ring matches primary / Anillo de foco coincide con primario */
 
   --radius: 0.75rem;
 }
