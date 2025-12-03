@@ -10,7 +10,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'high',
     rating: 4.9,
     popularity: 'must-see',
-    category: 'Cathedral'
+    category: 'Cathedral',
+    coordinates: { lat: 50.9413, lng: 6.9583 }
   },
   {
     id: 'old-town',
@@ -21,7 +22,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'medium',
     rating: 4.7,
     popularity: 'must-see',
-    category: 'Neighborhood'
+    category: 'Neighborhood',
+    coordinates: { lat: 50.9375, lng: 6.9603 }
   },
   {
     id: 'hohenzollern-bridge',
@@ -32,7 +34,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'medium',
     rating: 4.8,
     popularity: 'must-see',
-    category: 'Landmark'
+    category: 'Landmark',
+    coordinates: { lat: 50.9411, lng: 6.9658 }
   },
   {
     id: 'chocolate-museum',
@@ -43,7 +46,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'medium',
     rating: 4.6,
     popularity: 'popular',
-    category: 'Museum'
+    category: 'Museum',
+    coordinates: { lat: 50.9319, lng: 6.9649 }
   },
   {
     id: 'rhine-river-cruise',
@@ -54,7 +58,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.5,
     popularity: 'popular',
-    category: 'Experience'
+    category: 'Experience',
+    coordinates: { lat: 50.9370, lng: 6.9603 }
   },
   {
     id: 'belgian-quarter',
@@ -65,7 +70,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'medium',
     rating: 4.6,
     popularity: 'popular',
-    category: 'Neighborhood'
+    category: 'Neighborhood',
+    coordinates: { lat: 50.9333, lng: 6.9350 }
   },
   {
     id: 'roman-germanic-museum',
@@ -76,7 +82,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.4,
     popularity: 'hidden-gem',
-    category: 'Museum'
+    category: 'Museum',
+    coordinates: { lat: 50.9407, lng: 6.9581 }
   },
   {
     id: 'cologne-zoo',
@@ -87,7 +94,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'medium',
     rating: 4.6,
     popularity: 'popular',
-    category: 'Attraction'
+    category: 'Attraction',
+    coordinates: { lat: 50.9589, lng: 6.9742 }
   },
   {
     id: 'kolumba-museum',
@@ -98,7 +106,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.7,
     popularity: 'hidden-gem',
-    category: 'Museum'
+    category: 'Museum',
+    coordinates: { lat: 50.9394, lng: 6.9492 }
   },
   {
     id: 'rheinpark',
@@ -109,7 +118,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.5,
     popularity: 'popular',
-    category: 'Park'
+    category: 'Park',
+    coordinates: { lat: 50.9475, lng: 6.9847 }
   },
   {
     id: 'eau-de-cologne',
@@ -120,7 +130,8 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.4,
     popularity: 'hidden-gem',
-    category: 'Museum'
+    category: 'Museum',
+    coordinates: { lat: 50.9367, lng: 6.9572 }
   },
   {
     id: 'st-gereon',
@@ -131,6 +142,7 @@ export const kolnSites: Site[] = [
     crowdLevel: 'low',
     rating: 4.6,
     popularity: 'hidden-gem',
-    category: 'Church'
+    category: 'Church',
+    coordinates: { lat: 50.9431, lng: 6.9464 }
   }
 ]

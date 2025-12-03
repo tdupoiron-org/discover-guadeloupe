@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { kolnSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
+import { MapView } from '@/components/MapView'
+import { ViewSwitcher } from '@/components/ViewSwitcher'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, CheckCircle } from '@phosphor-icons/react'
+import { MapPin, CheckCircle, Crosshair } from '@phosphor-icons/react'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
+  const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
+  const [locationError, setLocationError] = useState<string | null>(null)
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false)
 
   const visited = visitedSites
 
@@ -18,6 +24,42 @@ function App() {
       }
       return [...current, siteId]
     })
+  }
+
+  useEffect(() => {
+    // Try to get user's location when map view is activated
+    if (viewMode === 'map' && !userLocation && !locationError) {
+      requestUserLocation()
+    }
+  }, [viewMode])
+
+  const requestUserLocation = () => {
+    if ('geolocation' in navigator) {
+      setIsLoadingLocation(true)
+      setLocationError(null)
+      
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          })
+          setIsLoadingLocation(false)
+        },
+        (error) => {
+          console.error('Error getting location:', error)
+          setLocationError('Unable to get your location')
+          setIsLoadingLocation(false)
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      )
+    } else {
+      setLocationError('Geolocation is not supported by your browser')
+    }
   }
 
   const filteredSites = kolnSites.filter(site => {
@@ -46,6 +88,28 @@ function App() {
           </p>
 
           <div className="space-y-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
+              
+              <div className="flex-grow" />
+              
+              {viewMode === 'map' && (
+                <button
+                  onClick={requestUserLocation}
+                  disabled={isLoadingLocation}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    userLocation
+                      ? 'bg-primary/20 text-primary hover:bg-primary/30'
+                      : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                  } disabled:opacity-50`}
+                  title="Center map on your location"
+                >
+                  <Crosshair weight="bold" className="inline w-4 h-4 mr-1.5" />
+                  {isLoadingLocation ? 'Locating...' : userLocation ? 'Update Location' : 'Use My Location'}
+                </button>
+              )}
+            </div>
+            
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setFilter('all')}
@@ -94,7 +158,14 @@ function App() {
           </div>
         </header>
 
-        {filteredSites.length === 0 ? (
+        {viewMode === 'map' ? (
+          <MapView
+            sites={filteredSites}
+            visitedSites={visited}
+            onToggleVisit={toggleVisit}
+            userLocation={userLocation}
+          />
+        ) : filteredSites.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
