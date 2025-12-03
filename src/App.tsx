@@ -132,7 +132,7 @@ function App() {
             >
               tdupoiron
             </a>
-            {' '}and{' '}
+            {', '}
             <a 
               href="https://github.com/zjaveed" 
               target="_blank" 
@@ -141,6 +141,16 @@ function App() {
               aria-label="Visit zjaveed's GitHub profile"
             >
               zjaveed
+            </a>
+            {' '}and{' '}
+            <a 
+              href="https://github.com/lornajane" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-foreground transition-colors"
+              aria-label="Visit Lorna's GitHub profile"
+            >
+              Lorna
             </a>
           </p>
         </div>
