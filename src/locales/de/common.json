@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Köln Entdecken",
+    "subtitle": "Willkommen zu Ihrem persönlichen Reiseführer für die faszinierendsten Orte in Köln. Verfolgen Sie Ihre Reise durch diese großartige Stadt.",
+    "footer": "© 2025 Köln Entdecken. Mit ❤️ für Reisende gemacht."
+  },
+  "filters": {
+    "all": "Alle Orte",
+    "toVisit": "Zu besuchen",
+    "visited": "Besucht"
+  },
+  "view": {
+    "label": "Ansicht:",
+    "grid": "Raster",
+    "list": "Liste"
+  },
+  "progress": {
+    "title": "Ihr Fortschritt",
+    "of": "von"
+  },
+  "emptyState": {
+    "startExploring": "Beginnen Sie, Köln zu erkunden und markieren Sie Ihren ersten Ort! ✨",
+    "congratulations": "🎉 Glückwunsch! Sie haben alle Orte besucht!",
+    "noMatch": "Keine Orte entsprechen Ihrem Filter."
+  },
+  "crowdLevel": {
+    "high": "hoch",
+    "medium": "mittel",
+    "low": "niedrig"
+  },
+  "popularity": {
+    "mustSee": "Pflichtbesuch",
+    "popular": "Beliebt",
+    "hiddenGem": "Geheimtipp"
+  },
+  "accessibility": {
+    "markVisited": "Als besucht markieren",
+    "markNotVisited": "Als nicht besucht markieren"
+  },
+  "language": {
+    "select": "Sprache auswählen",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文"
+  }
+}

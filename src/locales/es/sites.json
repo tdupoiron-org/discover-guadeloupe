@@ -1,0 +1,74 @@
+{
+  "cologne-cathedral": {
+    "name": "Catedral de Colonia (Kölner Dom)",
+    "description": "Catedral gótica icónica y Patrimonio de la Humanidad de la UNESCO. Sube 533 escalones hasta la torre para vistas impresionantes de la ciudad. Alberga el Relicario de los Tres Reyes Magos.",
+    "category": "Catedral",
+    "duration": "2-3 horas"
+  },
+  "old-town": {
+    "name": "Ciudad vieja (Altstadt)",
+    "description": "Corazón histórico de Colonia con edificios coloridos, cervecerías tradicionales y plazas encantadoras. Perfecto para explorar la cultura alemana y probar auténtica cerveza Kölsch.",
+    "category": "Barrio",
+    "duration": "2-3 horas"
+  },
+  "hohenzollern-bridge": {
+    "name": "Puente Hohenzollern",
+    "description": "Famoso puente adornado con miles de candados de amor. Ofrece vistas impresionantes de la catedral y el río Rin, especialmente al atardecer.",
+    "category": "Monumento",
+    "duration": "30-45 min"
+  },
+  "chocolate-museum": {
+    "name": "Museo del Chocolate",
+    "description": "Museo interactivo que muestra 5.000 años de historia del chocolate. Cuenta con una fuente de chocolate y ofrece degustaciones. Perfecto para familias y amantes del chocolate.",
+    "category": "Museo",
+    "duration": "1,5-2 horas"
+  },
+  "rhine-river-cruise": {
+    "name": "Crucero por el Rin",
+    "description": "Paseo relajante en barco a lo largo del histórico Rin que ofrece vistas únicas del horizonte de Colonia, puentes y arquitectura ribereña.",
+    "category": "Experiencia",
+    "duration": "1 hora"
+  },
+  "belgian-quarter": {
+    "name": "Barrio belga",
+    "description": "Barrio de moda con tiendas boutique, cafés y arte callejero. Conocido por su vibrante vida nocturna y atmósfera multicultural.",
+    "category": "Barrio",
+    "duration": "2-3 horas"
+  },
+  "roman-germanic-museum": {
+    "name": "Museo Romano-Germánico",
+    "description": "Museo arqueológico que exhibe artefactos romanos encontrados en Colonia. Alberga el famoso mosaico de Dionisio y una colección de vidrio antiguo.",
+    "category": "Museo",
+    "duration": "1-1,5 horas"
+  },
+  "cologne-zoo": {
+    "name": "Zoo de Colonia",
+    "description": "Uno de los zoológicos más antiguos de Alemania con más de 10.000 animales. Incluye un acuario impresionante y una casa de selva tropical.",
+    "category": "Atracción",
+    "duration": "2-3 horas"
+  },
+  "kolumba-museum": {
+    "name": "Museo Kolumba",
+    "description": "Museo de arte galardonado construido sobre ruinas de una iglesia medieval. Combina cimientos antiguos con arquitectura moderna de Peter Zumthor.",
+    "category": "Museo",
+    "duration": "1,5-2 horas"
+  },
+  "rheinpark": {
+    "name": "Rheinpark",
+    "description": "Amplio parque junto al río, perfecto para picnics, trotar y relajarse. Toma el teleférico a través del Rin para vistas panorámicas de la ciudad.",
+    "category": "Parque",
+    "duration": "1-2 horas"
+  },
+  "eau-de-cologne": {
+    "name": "Museo de Fragancias Farina",
+    "description": "Lugar de nacimiento del Eau de Cologne (Kölnisch Wasser). Aprende sobre la historia de 300 años de la marca de fragancias más antigua del mundo.",
+    "category": "Museo",
+    "duration": "1 hora"
+  },
+  "st-gereon": {
+    "name": "Basílica de San Gereón",
+    "description": "Iglesia románica notable con una cúpula decagonal única. Una de las doce iglesias románicas en el centro histórico de Colonia.",
+    "category": "Iglesia",
+    "duration": "30-45 min"
+  }
+}

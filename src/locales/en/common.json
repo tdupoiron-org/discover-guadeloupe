@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Discover Köln",
+    "subtitle": "Welcome to your personal guide for exploring Köln's most captivating sites. Track your journey through this magnificent city.",
+    "footer": "© 2025 Discover Köln. Made with ❤️ for travelers."
+  },
+  "filters": {
+    "all": "All Sites",
+    "toVisit": "To Visit",
+    "visited": "Visited"
+  },
+  "view": {
+    "label": "View:",
+    "grid": "Grid",
+    "list": "List"
+  },
+  "progress": {
+    "title": "Your Progress",
+    "of": "of"
+  },
+  "emptyState": {
+    "startExploring": "Start exploring Köln and mark your first site! ✨",
+    "congratulations": "🎉 Congratulations! You've visited all the sites!",
+    "noMatch": "No sites match your filter."
+  },
+  "crowdLevel": {
+    "high": "high",
+    "medium": "medium",
+    "low": "low"
+  },
+  "popularity": {
+    "mustSee": "Must-See",
+    "popular": "Popular",
+    "hiddenGem": "Hidden Gem"
+  },
+  "accessibility": {
+    "markVisited": "Mark as visited",
+    "markNotVisited": "Mark as not visited"
+  },
+  "language": {
+    "select": "Select language",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "cologne-cathedral": {
+    "name": "Cathédrale de Cologne (Kölner Dom)",
+    "description": "Cathédrale gothique emblématique et site du patrimoine mondial de l'UNESCO. Montez 533 marches jusqu'à la tour pour une vue imprenable sur la ville. Abrite le reliquaire des Rois Mages.",
+    "category": "Cathédrale",
+    "duration": "2-3 heures"
+  },
+  "old-town": {
+    "name": "Vieille ville (Altstadt)",
+    "description": "Cœur historique de Cologne avec des bâtiments colorés, des brasseries traditionnelles et des places charmantes. Parfait pour explorer la culture allemande et goûter l'authentique bière Kölsch.",
+    "category": "Quartier",
+    "duration": "2-3 heures"
+  },
+  "hohenzollern-bridge": {
+    "name": "Pont Hohenzollern",
+    "description": "Pont célèbre orné de milliers de cadenas d'amour. Offre une vue magnifique sur la cathédrale et le Rhin, surtout au coucher du soleil.",
+    "category": "Monument",
+    "duration": "30-45 min"
+  },
+  "chocolate-museum": {
+    "name": "Musée du Chocolat",
+    "description": "Musée interactif présentant 5 000 ans d'histoire du chocolat. Avec une fontaine de chocolat et des dégustations. Parfait pour les familles et les amateurs de chocolat.",
+    "category": "Musée",
+    "duration": "1,5-2 heures"
+  },
+  "rhine-river-cruise": {
+    "name": "Croisière sur le Rhin",
+    "description": "Promenade en bateau relaxante le long du Rhin historique offrant une vue unique sur la ligne d'horizon de Cologne, les ponts et l'architecture riveraine.",
+    "category": "Expérience",
+    "duration": "1 heure"
+  },
+  "belgian-quarter": {
+    "name": "Quartier belge",
+    "description": "Quartier branché avec des boutiques, des cafés et du street art. Connu pour sa vie nocturne animée et son atmosphère multiculturelle.",
+    "category": "Quartier",
+    "duration": "2-3 heures"
+  },
+  "roman-germanic-museum": {
+    "name": "Musée romano-germanique",
+    "description": "Musée archéologique présentant des artefacts romains trouvés à Cologne. Abrite la célèbre mosaïque de Dionysos et une collection de verre antique.",
+    "category": "Musée",
+    "duration": "1-1,5 heures"
+  },
+  "cologne-zoo": {
+    "name": "Zoo de Cologne",
+    "description": "L'un des plus anciens zoos d'Allemagne avec plus de 10 000 animaux. Comprend un aquarium impressionnant et une maison de forêt tropicale.",
+    "category": "Attraction",
+    "duration": "2-3 heures"
+  },
+  "kolumba-museum": {
+    "name": "Musée Kolumba",
+    "description": "Musée d'art primé construit sur les ruines d'une église médiévale. Combine des fondations anciennes avec l'architecture moderne de Peter Zumthor.",
+    "category": "Musée",
+    "duration": "1,5-2 heures"
+  },
+  "rheinpark": {
+    "name": "Rheinpark",
+    "description": "Vaste parc au bord du fleuve, parfait pour les pique-niques, le jogging et la détente. Prenez le téléphérique à travers le Rhin pour une vue panoramique sur la ville.",
+    "category": "Parc",
+    "duration": "1-2 heures"
+  },
+  "eau-de-cologne": {
+    "name": "Musée des Parfums Farina",
+    "description": "Lieu de naissance de l'Eau de Cologne (Kölnisch Wasser). Découvrez l'histoire de 300 ans de la plus ancienne marque de parfum au monde.",
+    "category": "Musée",
+    "duration": "1 heure"
+  },
+  "st-gereon": {
+    "name": "Basilique Saint-Géréon",
+    "description": "Église romane remarquable avec un dôme décagonal unique. L'une des douze églises romanes du centre historique de Cologne.",
+    "category": "Église",
+    "duration": "30-45 min"
+  }
+}

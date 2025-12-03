@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Découvrir Cologne",
+    "subtitle": "Bienvenue dans votre guide personnel pour explorer les sites les plus captivants de Cologne. Suivez votre voyage à travers cette ville magnifique.",
+    "footer": "© 2025 Découvrir Cologne. Fait avec ❤️ pour les voyageurs."
+  },
+  "filters": {
+    "all": "Tous les sites",
+    "toVisit": "À visiter",
+    "visited": "Visités"
+  },
+  "view": {
+    "label": "Vue :",
+    "grid": "Grille",
+    "list": "Liste"
+  },
+  "progress": {
+    "title": "Votre progression",
+    "of": "sur"
+  },
+  "emptyState": {
+    "startExploring": "Commencez à explorer Cologne et marquez votre premier site ! ✨",
+    "congratulations": "🎉 Félicitations ! Vous avez visité tous les sites !",
+    "noMatch": "Aucun site ne correspond à votre filtre."
+  },
+  "crowdLevel": {
+    "high": "élevé",
+    "medium": "moyen",
+    "low": "faible"
+  },
+  "popularity": {
+    "mustSee": "Incontournable",
+    "popular": "Populaire",
+    "hiddenGem": "Joyau caché"
+  },
+  "accessibility": {
+    "markVisited": "Marquer comme visité",
+    "markNotVisited": "Marquer comme non visité"
+  },
+  "language": {
+    "select": "Sélectionner la langue",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文"
+  }
+}

@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { kolnSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, CheckCircle } from '@phosphor-icons/react'
 import ListView from '@/components/ListView'
+import { LanguageSelector } from '@/components/LanguageSelector'
 
 function App() {
+  const { t } = useTranslation()
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
   const [view, setView] = useState<'grid' | 'list'>('grid')
@@ -36,15 +39,17 @@ function App() {
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-8 md:px-8 md:py-12">
         <header className="mb-8 md:mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <MapPin weight="fill" className="w-10 h-10 text-primary" />
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Discover Köln
-            </h1>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <MapPin weight="fill" className="w-10 h-10 text-primary" />
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                {t('app.title')}
+              </h1>
+            </div>
+            <LanguageSelector />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-            Welcome to your personal guide for exploring Köln's most captivating sites. 
-            Track your journey through this magnificent city.
+            {t('app.subtitle')}
           </p>
 
           <div className="space-y-4">
@@ -57,7 +62,7 @@ function App() {
                     : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
-                All Sites ({totalCount})
+                {t('filters.all')} ({totalCount})
               </button>
               <button
                 onClick={() => setFilter('unvisited')}
@@ -67,7 +72,7 @@ function App() {
                     : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
-                To Visit ({totalCount - visitedCount})
+                {t('filters.toVisit')} ({totalCount - visitedCount})
               </button>
               <button
                 onClick={() => setFilter('visited')}
@@ -78,13 +83,13 @@ function App() {
                 }`}
               >
                 <CheckCircle weight="fill" className="inline w-4 h-4 mr-1.5" />
-                Visited ({visitedCount})
+                {t('filters.visited')} ({visitedCount})
               </button>
             </div>
 
             {/* Sliding Switcher for Grid/List View */}
             <div className="flex items-center gap-2 mt-4">
-              <span className="text-sm text-muted-foreground">View:</span>
+              <span className="text-sm text-muted-foreground">{t('view.label')}</span>
               <div className="flex bg-secondary rounded-md overflow-hidden">
                 <button
                   className={`px-4 py-2 text-sm font-medium transition-colors focus:outline-none ${
@@ -95,7 +100,7 @@ function App() {
                   onClick={() => setView('grid')}
                   aria-pressed={view === 'grid'}
                 >
-                  Grid
+                  {t('view.grid')}
                 </button>
                 <button
                   className={`px-4 py-2 text-sm font-medium transition-colors focus:outline-none ${
@@ -106,7 +111,7 @@ function App() {
                   onClick={() => setView('list')}
                   aria-pressed={view === 'list'}
                 >
-                  List
+                  {t('view.list')}
                 </button>
               </div>
             </div>
@@ -114,9 +119,9 @@ function App() {
             {visitedCount > 0 && (
               <div className="bg-card border border-border rounded-xl p-4 max-w-md">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-foreground">Your Progress</span>
+                  <span className="text-sm font-medium text-foreground">{t('progress.title')}</span>
                   <Badge variant="secondary">
-                    {visitedCount} of {totalCount}
+                    {visitedCount} {t('progress.of')} {totalCount}
                   </Badge>
                 </div>
                 <Progress value={progressPercentage} className="h-2" />
@@ -129,10 +134,10 @@ function App() {
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
-                ? 'Start exploring Köln and mark your first site! ✨'
+                ? t('emptyState.startExploring')
                 : filter === 'visited' && visitedCount === totalCount
-                ? '🎉 Congratulations! You\'ve visited all the sites!'
-                : 'No sites match your filter.'}
+                ? t('emptyState.congratulations')
+                : t('emptyState.noMatch')}
             </p>
           </div>
         ) : (
@@ -152,12 +157,10 @@ function App() {
           )
         )}
       </div>
-      {/* Footer - Fußzeile */}
       <footer className="border-t border-border mt-12">
         <div className="max-w-7xl mx-auto px-6 py-6 md:px-8">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 Discover Köln. Made with ❤️ for travelers.
-            {/* Mit Liebe für Reisende gemacht */}
+            {t('app.footer')}
           </p>
         </div>
       </footer>

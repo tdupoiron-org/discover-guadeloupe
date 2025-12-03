@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Descubrir Colonia",
+    "subtitle": "Bienvenido a tu guía personal para explorar los sitios más cautivadores de Colonia. Sigue tu viaje a través de esta magnífica ciudad.",
+    "footer": "© 2025 Descubrir Colonia. Hecho con ❤️ para viajeros."
+  },
+  "filters": {
+    "all": "Todos los sitios",
+    "toVisit": "Por visitar",
+    "visited": "Visitados"
+  },
+  "view": {
+    "label": "Vista:",
+    "grid": "Cuadrícula",
+    "list": "Lista"
+  },
+  "progress": {
+    "title": "Tu progreso",
+    "of": "de"
+  },
+  "emptyState": {
+    "startExploring": "¡Comienza a explorar Colonia y marca tu primer sitio! ✨",
+    "congratulations": "🎉 ¡Felicidades! ¡Has visitado todos los sitios!",
+    "noMatch": "Ningún sitio coincide con tu filtro."
+  },
+  "crowdLevel": {
+    "high": "alto",
+    "medium": "medio",
+    "low": "bajo"
+  },
+  "popularity": {
+    "mustSee": "Imprescindible",
+    "popular": "Popular",
+    "hiddenGem": "Joya oculta"
+  },
+  "accessibility": {
+    "markVisited": "Marcar como visitado",
+    "markNotVisited": "Marcar como no visitado"
+  },
+  "language": {
+    "select": "Seleccionar idioma",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文"
+  }
+}

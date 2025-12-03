@@ -1,0 +1,74 @@
+{
+  "cologne-cathedral": {
+    "name": "科隆大教堂（Kölner Dom）",
+    "description": "标志性的哥特式大教堂和联合国教科文组织世界遗产。爬533级台阶到塔顶，欣赏令人惊叹的城市景观。珍藏三王圣龛。",
+    "category": "教堂",
+    "duration": "2-3小时"
+  },
+  "old-town": {
+    "name": "老城区（Altstadt）",
+    "description": "科隆的历史中心，拥有色彩缤纷的建筑、传统啤酒屋和迷人的广场。完美探索德国文化并品尝正宗的科隆啤酒。",
+    "category": "街区",
+    "duration": "2-3小时"
+  },
+  "hohenzollern-bridge": {
+    "name": "霍亨索伦桥",
+    "description": "著名的桥梁，装饰着成千上万的爱情锁。可欣赏大教堂和莱茵河的壮丽景色，尤其是在日落时分。",
+    "category": "地标",
+    "duration": "30-45分钟"
+  },
+  "chocolate-museum": {
+    "name": "巧克力博物馆",
+    "description": "互动博物馆，展示5000年的巧克力历史。设有巧克力喷泉并提供品尝。非常适合家庭和巧克力爱好者。",
+    "category": "博物馆",
+    "duration": "1.5-2小时"
+  },
+  "rhine-river-cruise": {
+    "name": "莱茵河游船",
+    "description": "沿着历史悠久的莱茵河悠闲乘船游览，欣赏科隆天际线、桥梁和河畔建筑的独特景观。",
+    "category": "体验",
+    "duration": "1小时"
+  },
+  "belgian-quarter": {
+    "name": "比利时区",
+    "description": "时尚街区，拥有精品店、咖啡馆和街头艺术。以其充满活力的夜生活和多元文化氛围而闻名。",
+    "category": "街区",
+    "duration": "2-3小时"
+  },
+  "roman-germanic-museum": {
+    "name": "罗马-日耳曼博物馆",
+    "description": "考古博物馆，展示在科隆发现的罗马文物。收藏著名的狄俄尼索斯马赛克和古代玻璃收藏品。",
+    "category": "博物馆",
+    "duration": "1-1.5小时"
+  },
+  "cologne-zoo": {
+    "name": "科隆动物园",
+    "description": "德国最古老的动物园之一，拥有超过10,000只动物。包括令人印象深刻的水族馆和热带雨林馆。",
+    "category": "景点",
+    "duration": "2-3小时"
+  },
+  "kolumba-museum": {
+    "name": "科伦巴博物馆",
+    "description": "屡获殊荣的艺术博物馆，建在中世纪教堂遗址上。将古老的基础与彼得·卒姆托的现代建筑相结合。",
+    "category": "博物馆",
+    "duration": "1.5-2小时"
+  },
+  "rheinpark": {
+    "name": "莱茵公园",
+    "description": "广阔的河畔公园，非常适合野餐、慢跑和放松。乘坐缆车穿越莱茵河，欣赏全景城市景观。",
+    "category": "公园",
+    "duration": "1-2小时"
+  },
+  "eau-de-cologne": {
+    "name": "法里纳香水博物馆",
+    "description": "古龙水（Kölnisch Wasser）的诞生地。了解世界上最古老的香水品牌300年的历史。",
+    "category": "博物馆",
+    "duration": "1小时"
+  },
+  "st-gereon": {
+    "name": "圣格雷翁大教堂",
+    "description": "具有独特十边形圆顶的罗马式教堂。科隆历史中心十二座罗马式教堂之一。",
+    "category": "教堂",
+    "duration": "30-45分钟"
+  }
+}

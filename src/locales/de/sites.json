@@ -1,0 +1,74 @@
+{
+  "cologne-cathedral": {
+    "name": "Kölner Dom",
+    "description": "Ikonische gotische Kathedrale und UNESCO-Weltkulturerbe. Erklimmen Sie 533 Stufen zum Turm für atemberaubende Stadtansichten. Beherbergt den Dreikönigenschrein.",
+    "category": "Kathedrale",
+    "duration": "2-3 Stunden"
+  },
+  "old-town": {
+    "name": "Altstadt",
+    "description": "Historisches Herz von Köln mit farbenfrohen Gebäuden, traditionellen Brauhäusern und charmanten Plätzen. Perfekt, um die deutsche Kultur zu erkunden und authentisches Kölsch zu probieren.",
+    "category": "Stadtviertel",
+    "duration": "2-3 Stunden"
+  },
+  "hohenzollern-bridge": {
+    "name": "Hohenzollernbrücke",
+    "description": "Berühmte Brücke mit Tausenden von Liebesschlössern geschmückt. Bietet atemberaubende Ausblicke auf den Dom und den Rhein, besonders bei Sonnenuntergang.",
+    "category": "Wahrzeichen",
+    "duration": "30-45 Min"
+  },
+  "chocolate-museum": {
+    "name": "Schokoladenmuseum",
+    "description": "Interaktives Museum, das 5.000 Jahre Schokoladengeschichte zeigt. Mit Schokoladenbrunnen und Verkostungen. Perfekt für Familien und Schokoladenliebhaber.",
+    "category": "Museum",
+    "duration": "1,5-2 Stunden"
+  },
+  "rhine-river-cruise": {
+    "name": "Rhein-Flusskreuzfahrt",
+    "description": "Entspannende Bootsfahrt entlang des historischen Rheins mit einzigartigen Ausblicken auf Kölns Skyline, Brücken und Uferarchitektur.",
+    "category": "Erlebnis",
+    "duration": "1 Stunde"
+  },
+  "belgian-quarter": {
+    "name": "Belgisches Viertel",
+    "description": "Trendiges Viertel mit Boutiquen, Cafés und Street Art. Bekannt für sein lebhaftes Nachtleben und multikulturelle Atmosphäre.",
+    "category": "Stadtviertel",
+    "duration": "2-3 Stunden"
+  },
+  "roman-germanic-museum": {
+    "name": "Römisch-Germanisches Museum",
+    "description": "Archäologisches Museum mit römischen Artefakten aus Köln. Beherbergt das berühmte Dionysos-Mosaik und antike Glassammlung.",
+    "category": "Museum",
+    "duration": "1-1,5 Stunden"
+  },
+  "cologne-zoo": {
+    "name": "Kölner Zoo",
+    "description": "Einer der ältesten Zoos Deutschlands mit über 10.000 Tieren. Umfasst beeindruckendes Aquarium und tropisches Regenwaldhaus.",
+    "category": "Attraktion",
+    "duration": "2-3 Stunden"
+  },
+  "kolumba-museum": {
+    "name": "Kolumba Museum",
+    "description": "Preisgekröntes Kunstmuseum über mittelalterlichen Kirchenruinen. Verbindet alte Fundamente mit moderner Architektur von Peter Zumthor.",
+    "category": "Museum",
+    "duration": "1,5-2 Stunden"
+  },
+  "rheinpark": {
+    "name": "Rheinpark",
+    "description": "Weitläufiger Uferpark, perfekt für Picknicks, Joggen und Entspannen. Fahren Sie mit der Seilbahn über den Rhein für Panoramablicke auf die Stadt.",
+    "category": "Park",
+    "duration": "1-2 Stunden"
+  },
+  "eau-de-cologne": {
+    "name": "Farina Duftmuseum",
+    "description": "Geburtsort des Eau de Cologne (Kölnisch Wasser). Erfahren Sie mehr über die 300-jährige Geschichte der ältesten Duftmarke der Welt.",
+    "category": "Museum",
+    "duration": "1 Stunde"
+  },
+  "st-gereon": {
+    "name": "St. Gereon Basilika",
+    "description": "Bemerkenswerte romanische Kirche mit einzigartiger zehneckiger Kuppel. Eine von zwölf romanischen Kirchen im historischen Zentrum von Köln.",
+    "category": "Kirche",
+    "duration": "30-45 Min"
+  }
+}
