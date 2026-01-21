@@ -1,0 +1,25 @@
+name: Update Documentation
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  update-docs:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tdupoiron-actions/copilot-external-doc-updater@main
+        with:
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-page-id: ${{ secrets.NOTION_PAGE_ID }}
+          github-token: ${{ secrets.COPILOT_TOKEN }}
+          model: 'gpt-4o'
+          update-mode: 'changelog-and-doc'
