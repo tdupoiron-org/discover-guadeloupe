@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: tdupoiron-actions/copilot-external-doc-updater@v0.0.2
+      - uses: tdupoiron-actions/copilot-external-doc-updater@v0.0.3
         with:
           notion-token: ${{ secrets.NOTION_TOKEN }}
           notion-page-id: ${{ secrets.NOTION_PAGE_ID }}
