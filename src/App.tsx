@@ -1,5 +1,6 @@
+// Main App component for Guadeloupe discovery / Hauptkomponente für die Entdeckung von Guadeloupe
 import { useState } from 'react'
-import { kolnSites } from '@/data/sites'
+import { guadeloupeSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
@@ -11,6 +12,7 @@ function App() {
 
   const visited = visitedSites
 
+  // Toggle visit status for a site / Besuchsstatus für eine Sehenswürdigkeit umschalten
   const toggleVisit = (siteId: string) => {
     setVisitedSites((current) => {
       if (current.includes(siteId)) {
@@ -20,14 +22,16 @@ function App() {
     })
   }
 
-  const filteredSites = kolnSites.filter(site => {
+  // Filter sites based on visit status / Sehenswürdigkeiten nach Besuchsstatus filtern
+  const filteredSites = guadeloupeSites.filter(site => {
     if (filter === 'visited') return visited.includes(site.id)
     if (filter === 'unvisited') return !visited.includes(site.id)
     return true
   })
 
+  // Calculate visit progress / Besuchsfortschritt berechnen
   const visitedCount = visited.length
-  const totalCount = kolnSites.length
+  const totalCount = guadeloupeSites.length
   const progressPercentage = (visitedCount / totalCount) * 100
 
   return (
@@ -37,12 +41,12 @@ function App() {
           <div className="flex items-center gap-3 mb-3">
             <MapPin weight="fill" className="w-10 h-10 text-primary" />
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Discover Köln
+              Discover Guadeloupe
             </h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-            Welcome to your personal guide for exploring Köln's most captivating sites. 
-            Track your journey through this magnificent city.
+            Welcome to your personal guide for exploring Guadeloupe's most captivating sites. 
+            Track your journey through this beautiful Caribbean paradise.
           </p>
 
           <div className="space-y-4">
@@ -98,7 +102,7 @@ function App() {
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
-                ? 'Start exploring Köln and mark your first site! ✨'
+                ? 'Start exploring Guadeloupe and mark your first site! ✨'
                 : filter === 'visited' && visitedCount === totalCount
                 ? '🎉 Congratulations! You\'ve visited all the sites!'
                 : 'No sites match your filter.'}
@@ -122,7 +126,7 @@ function App() {
       <footer className="border-t border-border mt-12">
         <div className="max-w-7xl mx-auto px-6 py-6 md:px-8">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 Discover Köln. Made with ❤️ for travelers by{' '}
+            © 2025 Discover Guadeloupe. Made with ❤️ for travelers by{' '}
             <a 
               href="https://github.com/tdupoiron" 
               target="_blank" 

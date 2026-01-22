@@ -1,9 +1,9 @@
 # Planning Guide
 
-A personalized discovery app for first-time visitors to Köln (Cologne), helping travelers explore the city's most iconic sites with curated information and visit tracking.
+A personalized discovery app for first-time visitors to Guadeloupe, helping travelers explore the island's most iconic sites with curated information and visit tracking.
 
 **Experience Qualities**:
-1. **Inviting** - Professional and clean aesthetic that evokes the spirit and energy of Köln, encouraging exploration
+1. **Inviting** - Professional and clean aesthetic that evokes the spirit and natural beauty of Guadeloupe, encouraging exploration
 2. **Informative** - Clear, scannable information that helps make quick decisions about what to visit next
 3. **Personal** - Tracking visited locations creates a sense of journey and accomplishment throughout the trip
 
@@ -13,7 +13,7 @@ This app combines content showcase with interactive state management for visit t
 ## Essential Features
 
 ### Site Discovery Grid/List
-- **Functionality**: Display curated list of Köln's must-visit sites with rich metadata (visit duration, crowd levels, ratings, popularity tier, must-see status)
+- **Functionality**: Display curated list of Guadeloupe's must-visit sites with rich metadata (visit duration, crowd levels, ratings, popularity tier, must-see status)
 - **Purpose**: Help travelers make informed decisions about where to go based on available time, preferences, and crowd tolerance
 - **Trigger**: Default view on app load
 - **Progression**: App loads → Sites display in grid/card layout → User scans metadata → Decides which site to visit
@@ -21,7 +21,7 @@ This app combines content showcase with interactive state management for visit t
 
 ### Visit Tracking
 - **Functionality**: Toggle visited/unvisited status for each site with visual distinction
-- **Purpose**: Track progress through Köln's attractions and maintain a personal record of the trip
+- **Purpose**: Track progress through Guadeloupe's attractions and maintain a personal record of the trip
 - **Trigger**: User clicks/taps checkbox or button on site card
 - **Progression**: User visits site → Opens app → Marks as visited → Visual state changes (badge, checkmark, or card styling updates) → State persists across sessions
 - **Success criteria**: Visit status persists on reload; clear visual distinction between visited and unvisited sites; satisfying interaction feedback
@@ -42,11 +42,11 @@ This app combines content showcase with interactive state management for visit t
 
 ## Design Direction
 
-The design should feel professional, clean, and inviting - evoking Köln's blend of historic Gothic architecture and modern urban culture. The interface should be elegant and sophisticated, adhering to AXA brand guidelines while letting the beautiful site imagery and information breathe.
+The design should feel professional, clean, and inviting - evoking Guadeloupe's tropical beauty, Caribbean waters, and lush landscapes. The interface should be elegant and sophisticated, adhering to AXA brand guidelines while letting the beautiful site imagery and information breathe.
 
 ## Color Selection
 
-Professional palette aligned with AXA brand guidelines, featuring blue and white with clean, minimalist aesthetics representing Köln's Rhine River and cathedral.
+Professional palette aligned with AXA brand guidelines, featuring blue and white with clean, minimalist aesthetics representing Guadeloupe's Caribbean waters and tropical paradise.
 
 - **Primary Color**: AXA Blue `oklch(0.45 0.12 240)` - Represents professionalism, trustworthiness, and the Rhine River
 - **Secondary Colors**: 

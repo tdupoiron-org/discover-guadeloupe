@@ -13,7 +13,7 @@ Fügen Sie immer Kommentare in Englisch und Deutsch für alle Codeänderungen hi
 After each code change, update the corresponding Notion documentation page automatically.
 Aktualisieren Sie nach jeder Codeänderung automatisch die entsprechende Notion-Dokumentationsseite.
 
-**Notion Page**: [Discover Cologne - Travel Discovery App](https://www.notion.so/2a130ca4e79e8166bce1cb12c4b0cacb)
+**Notion Page**: [Discover Guadeloupe - Travel Discovery App](https://www.notion.so/2a130ca4e79e8166bce1cb12c4b0cacb)
 
 ### What to update / Was zu aktualisieren ist:
 - Document new features or components added

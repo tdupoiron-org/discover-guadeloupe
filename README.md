@@ -1,16 +1,28 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# ✨ Discover Guadeloupe
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+A personalized discovery app for first-time visitors to Guadeloupe, helping travelers explore the island's most captivating sites with curated information and visit tracking.
+
+This template is built with modern web technologies to provide an elegant and responsive experience for discovering the beautiful Caribbean island of Guadeloupe.
 
 🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
+- A clean, modern interface for exploring Guadeloupe's attractions
+- Pre-configured with Vite and React for fast development
+- Beautiful UI components powered by Radix UI and Tailwind CSS
+- Interactive site tracking and filtering
   
-🧠 What Can You Do?
+🌴 Features:
+- Curated list of must-see locations in Guadeloupe
+- Visit tracking with progress indicators
+- Responsive design for mobile and desktop
+- Beautiful imagery and detailed site descriptions
+- Filter by visit status (all, visited, unvisited)
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+🏖️ Location Categories:
+- Natural wonders (volcanoes, waterfalls, beaches)
+- Cultural sites and museums
+- Marine experiences (diving, snorkeling)
+- Island excursions
+- Local distilleries and gardens
 
 🧹 Just Exploring?
 No problem! If you were just checking things out and don’t need to keep this code:
