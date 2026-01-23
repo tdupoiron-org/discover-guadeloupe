@@ -2,15 +2,13 @@
 import { useState } from 'react'
 import { guadeloupeSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
-import { MapView } from '@/components/MapView'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, CheckCircle, SquaresFour, MapTrifold } from '@phosphor-icons/react'
+import { MapPin, CheckCircle } from '@phosphor-icons/react'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
-  const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
 
   const visited = visitedSites
 
@@ -84,34 +82,6 @@ function App() {
                 <CheckCircle weight="fill" className="inline w-4 h-4 mr-1.5" />
                 Visited ({visitedCount})
               </button>
-
-              {/* View Switcher */}
-              <div className="ml-auto flex gap-2 border border-border rounded-full p-1 bg-card">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
-                    viewMode === 'grid'
-                      ? 'bg-primary text-primary-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                  aria-label="Grid view"
-                >
-                  <SquaresFour weight="fill" className="w-4 h-4" />
-                  <span className="hidden sm:inline">Grid</span>
-                </button>
-                <button
-                  onClick={() => setViewMode('map')}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
-                    viewMode === 'map'
-                      ? 'bg-primary text-primary-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                  aria-label="Map view"
-                >
-                  <MapTrifold weight="fill" className="w-4 h-4" />
-                  <span className="hidden sm:inline">Map</span>
-                </button>
-              </div>
             </div>
 
             {visitedCount > 0 && (
@@ -138,12 +108,6 @@ function App() {
                 : 'No sites match your filter.'}
             </p>
           </div>
-        ) : viewMode === 'map' ? (
-          <MapView 
-            sites={filteredSites} 
-            visitedSites={visited}
-            onToggleVisit={toggleVisit}
-          />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredSites.map((site) => (
