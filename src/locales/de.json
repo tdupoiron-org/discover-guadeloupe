@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "Entdecke Guadeloupe",
+    "welcome": "Willkommen zu Ihrem persönlichen Reiseführer zur Erkundung der faszinierendsten Sehenswürdigkeiten Guadeloupes. Verfolgen Sie Ihre Reise durch dieses wunderschöne Karibikparadies.",
+    "allSites": "Alle Sehenswürdigkeiten",
+    "toVisit": "Zu besuchen",
+    "visited": "Besucht",
+    "yourProgress": "Ihr Fortschritt",
+    "startExploring": "Beginnen Sie mit der Erkundung von Guadeloupe und markieren Sie Ihre erste Sehenswürdigkeit! ✨",
+    "congratulations": "🎉 Herzlichen Glückwunsch! Sie haben alle Sehenswürdigkeiten besucht!",
+    "noMatch": "Keine Sehenswürdigkeiten entsprechen Ihrem Filter.",
+    "footer": "Mit ❤️ für Reisende gemacht von"
+  },
+  "categories": {
+    "Nature": "Natur",
+    "Landmark": "Wahrzeichen",
+    "Museum": "Museum",
+    "Beach": "Strand",
+    "Architecture": "Architektur",
+    "Distillery": "Brennerei",
+    "Gardens": "Gärten",
+    "Marine": "Meer",
+    "Experience": "Erlebnis",
+    "Village": "Dorf",
+    "Island": "Insel",
+    "Garden": "Garten"
+  },
+  "crowd": {
+    "high": "hoch",
+    "medium": "mittel",
+    "low": "niedrig"
+  },
+  "popularity": {
+    "must-see": "Sehenswert",
+    "popular": "Beliebt",
+    "hidden-gem": "Geheimtipp"
+  },
+  "actions": {
+    "markVisited": "Als besucht markieren",
+    "markNotVisited": "Als nicht besucht markieren"
+  }
+}

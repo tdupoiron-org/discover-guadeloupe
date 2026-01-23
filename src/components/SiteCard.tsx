@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Clock, Users, Star, Fire, Sparkle, CheckCircle } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
+import { useTranslation } from 'react-i18next'
 
 interface SiteCardProps {
   site: Site
@@ -12,6 +13,8 @@ interface SiteCardProps {
 }
 
 export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
+  const { t } = useTranslation()
+  
   const getCrowdBadgeVariant = (level: Site['crowdLevel']) => {
     switch (level) {
       case 'high':
@@ -26,11 +29,11 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
   const getPopularityConfig = (popularity: Site['popularity']) => {
     switch (popularity) {
       case 'must-see':
-        return { icon: Sparkle, label: 'Must-See', variant: 'cologne' as const }
+        return { icon: Sparkle, label: t('popularity.must-see'), variant: 'cologne' as const }
       case 'popular':
-        return { icon: Fire, label: 'Popular', variant: 'destructive' as const }
+        return { icon: Fire, label: t('popularity.popular'), variant: 'destructive' as const }
       case 'hidden-gem':
-        return { icon: Star, label: 'Hidden Gem', variant: 'default' as const }
+        return { icon: Star, label: t('popularity.hidden-gem'), variant: 'default' as const }
     }
   }
 
@@ -63,7 +66,7 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
         <div className="absolute top-3 left-3 flex gap-2">
           <Badge variant={getCrowdBadgeVariant(site.crowdLevel)} className="backdrop-blur-sm">
             <Users weight="fill" className="w-3 h-3 mr-1" />
-            {site.crowdLevel}
+            {t(`crowd.${site.crowdLevel}`)}
           </Badge>
         </div>
 
@@ -87,13 +90,13 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
               {site.name}
             </h3>
             <p className="text-xs text-muted-foreground uppercase tracking-wide">
-              {site.category}
+              {t(`categories.${site.category}`)}
             </p>
           </div>
           <button
             onClick={() => onToggleVisit(site.id)}
             className="flex-shrink-0 mt-1 hover:scale-110 transition-transform"
-            aria-label={isVisited ? 'Mark as not visited' : 'Mark as visited'}
+            aria-label={isVisited ? t('actions.markNotVisited') : t('actions.markVisited')}
           >
             <Checkbox 
               checked={isVisited}

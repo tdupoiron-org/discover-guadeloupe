@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "Découvrir la Guadeloupe",
+    "welcome": "Bienvenue dans votre guide personnel pour explorer les sites les plus captivants de la Guadeloupe. Suivez votre voyage à travers ce magnifique paradis des Caraïbes.",
+    "allSites": "Tous les sites",
+    "toVisit": "À visiter",
+    "visited": "Visités",
+    "yourProgress": "Votre progression",
+    "startExploring": "Commencez à explorer la Guadeloupe et marquez votre premier site ! ✨",
+    "congratulations": "🎉 Félicitations ! Vous avez visité tous les sites !",
+    "noMatch": "Aucun site ne correspond à votre filtre.",
+    "footer": "Fait avec ❤️ pour les voyageurs par"
+  },
+  "categories": {
+    "Nature": "Nature",
+    "Landmark": "Point de repère",
+    "Museum": "Musée",
+    "Beach": "Plage",
+    "Architecture": "Architecture",
+    "Distillery": "Distillerie",
+    "Gardens": "Jardins",
+    "Marine": "Marin",
+    "Experience": "Expérience",
+    "Village": "Village",
+    "Island": "Île",
+    "Garden": "Jardin"
+  },
+  "crowd": {
+    "high": "élevé",
+    "medium": "moyen",
+    "low": "faible"
+  },
+  "popularity": {
+    "must-see": "Incontournable",
+    "popular": "Populaire",
+    "hidden-gem": "Joyau caché"
+  },
+  "actions": {
+    "markVisited": "Marquer comme visité",
+    "markNotVisited": "Marquer comme non visité"
+  }
+}

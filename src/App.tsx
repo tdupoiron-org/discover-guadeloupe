@@ -1,12 +1,15 @@
 // Main App component for Guadeloupe discovery / Hauptkomponente für die Entdeckung von Guadeloupe
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { guadeloupeSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { MapPin, CheckCircle } from '@phosphor-icons/react'
 
 function App() {
+  const { t } = useTranslation()
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
 
@@ -38,15 +41,17 @@ function App() {
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-8 md:px-8 md:py-12">
         <header className="mb-8 md:mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <MapPin weight="fill" className="w-10 h-10 text-primary" />
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Discover Guadeloupe
-            </h1>
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div className="flex items-center gap-3">
+              <MapPin weight="fill" className="w-10 h-10 text-primary" />
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+                {t('app.title')}
+              </h1>
+            </div>
+            <LanguageSwitcher />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-            Welcome to your personal guide for exploring Guadeloupe's most captivating sites. 
-            Track your journey through this beautiful Caribbean paradise.
+            {t('app.welcome')}
           </p>
 
           <div className="space-y-4">
@@ -59,7 +64,7 @@ function App() {
                     : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
-                All Sites ({totalCount})
+                {t('app.allSites')} ({totalCount})
               </button>
               <button
                 onClick={() => setFilter('unvisited')}
@@ -69,7 +74,7 @@ function App() {
                     : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
-                To Visit ({totalCount - visitedCount})
+                {t('app.toVisit')} ({totalCount - visitedCount})
               </button>
               <button
                 onClick={() => setFilter('visited')}
@@ -80,14 +85,14 @@ function App() {
                 }`}
               >
                 <CheckCircle weight="fill" className="inline w-4 h-4 mr-1.5" />
-                Visited ({visitedCount})
+                {t('app.visited')} ({visitedCount})
               </button>
             </div>
 
             {visitedCount > 0 && (
               <div className="bg-card border border-border rounded-xl p-4 max-w-md">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-foreground">Your Progress</span>
+                  <span className="text-sm font-medium text-foreground">{t('app.yourProgress')}</span>
                   <Badge variant="secondary">
                     {visitedCount} of {totalCount}
                   </Badge>
@@ -102,10 +107,10 @@ function App() {
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
-                ? 'Start exploring Guadeloupe and mark your first site! ✨'
+                ? t('app.startExploring')
                 : filter === 'visited' && visitedCount === totalCount
-                ? '🎉 Congratulations! You\'ve visited all the sites!'
-                : 'No sites match your filter.'}
+                ? t('app.congratulations')
+                : t('app.noMatch')}
             </p>
           </div>
         ) : (
@@ -126,7 +131,7 @@ function App() {
       <footer className="border-t border-border mt-12">
         <div className="max-w-7xl mx-auto px-6 py-6 md:px-8">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 Discover Guadeloupe. Made with ❤️ for travelers by{' '}
+            © 2025 Discover Guadeloupe. {t('app.footer')}{' '}
             <a 
               href="https://github.com/tdupoiron" 
               target="_blank" 
@@ -135,7 +140,6 @@ function App() {
             >
               tdupoiron
             </a>
-            {/* Mit Liebe für Reisende gemacht */}
           </p>
         </div>
       </footer>
