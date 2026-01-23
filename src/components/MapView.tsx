@@ -40,8 +40,8 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
             setMapCenter([latitude, longitude])
           }
         },
-        (error) => {
-          console.log('Geolocation error:', error.message)
+        () => {
+          // Geolocation denied or unavailable - use default center
         }
       )
     }
@@ -69,9 +69,23 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
     }
   }
 
+  // Get color for marker based on visited status and popularity
+  const getMarkerColor = (isVisited: boolean, popularity: Site['popularity']): string => {
+    if (isVisited) return '#22c55e' // green
+    
+    switch (popularity) {
+      case 'must-see':
+        return '#9333ea' // purple
+      case 'popular':
+        return '#ef4444' // red
+      case 'hidden-gem':
+        return '#eab308' // yellow
+    }
+  }
+
   // Create custom marker icons for visited vs unvisited sites
   const createCustomIcon = (isVisited: boolean, popularity: Site['popularity']) => {
-    const color = isVisited ? '#22c55e' : popularity === 'must-see' ? '#9333ea' : popularity === 'popular' ? '#ef4444' : '#eab308'
+    const color = getMarkerColor(isVisited, popularity)
     
     return L.divIcon({
       className: 'custom-marker',
