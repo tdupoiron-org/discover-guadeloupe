@@ -24,9 +24,20 @@ interface MapViewProps {
   onToggleVisit: (siteId: string) => void
 }
 
+// Guadeloupe geographic bounds for geolocation validation
+const GUADELOUPE_BOUNDS = {
+  minLat: 15.5,
+  maxLat: 16.8,
+  minLng: -62,
+  maxLng: -60.8
+}
+
+// Default map center (centered on Guadeloupe)
+const DEFAULT_MAP_CENTER: [number, number] = [16.2, -61.5]
+
 export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null)
-  const [mapCenter, setMapCenter] = useState<[number, number]>([16.2, -61.5])
+  const [mapCenter, setMapCenter] = useState<[number, number]>(DEFAULT_MAP_CENTER)
   
   // Try to get user's geolocation
   useEffect(() => {
@@ -34,8 +45,13 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords
-          // Check if user is in/near Guadeloupe (rough bounds)
-          if (latitude >= 15.5 && latitude <= 16.8 && longitude >= -62 && longitude <= -60.8) {
+          // Check if user is in/near Guadeloupe
+          if (
+            latitude >= GUADELOUPE_BOUNDS.minLat && 
+            latitude <= GUADELOUPE_BOUNDS.maxLat && 
+            longitude >= GUADELOUPE_BOUNDS.minLng && 
+            longitude <= GUADELOUPE_BOUNDS.maxLng
+          ) {
             setUserLocation([latitude, longitude])
             setMapCenter([latitude, longitude])
           }
