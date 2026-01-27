@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'rea
 import { Site } from '../types/site'
 import { useTheme } from '../contexts/ThemeContext'
 import { useTranslation } from 'react-i18next'
+import { getCrowdColor, getPopularityEmoji, hexToRgba } from '../utils/colors'
 
 interface SiteCardProps {
   site: Site
@@ -17,21 +18,8 @@ export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVis
   const { colors } = useTheme()
   const { t } = useTranslation()
 
-  const getCrowdColor = (level: Site['crowdLevel']) => {
-    switch (level) {
-      case 'high': return colors.destructive
-      case 'medium': return colors.warning
-      case 'low': return colors.success
-    }
-  }
-
-  const getPopularityEmoji = (popularity: Site['popularity']) => {
-    switch (popularity) {
-      case 'must-see': return '✨'
-      case 'popular': return '🔥'
-      case 'hidden-gem': return '💎'
-    }
-  }
+  const crowdColor = getCrowdColor(site.crowdLevel, colors)
+  const popularityEmoji = getPopularityEmoji(site.popularity)
 
   return (
     <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -49,7 +37,7 @@ export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVis
       <View style={styles.content}>
         <View style={styles.header}>
           <Text style={[styles.category, { color: colors.textSecondary }]}>{site.category}</Text>
-          <Text style={styles.popularityEmoji}>{getPopularityEmoji(site.popularity)}</Text>
+          <Text style={styles.popularityEmoji}>{popularityEmoji}</Text>
         </View>
         
         <Text style={[styles.name, { color: colors.text }]}>{site.name}</Text>
@@ -63,16 +51,16 @@ export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVis
             <Text style={[styles.metadataValue, { color: colors.text }]}>{site.duration}</Text>
           </View>
           
-          <View style={styles.metadataItem}>
+          <View style={[styles.metadataItem, { marginLeft: 16 }]}>
             <Text style={[styles.metadataLabel, { color: colors.textSecondary }]}>👥</Text>
-            <View style={[styles.crowdBadge, { backgroundColor: getCrowdColor(site.crowdLevel) + '20' }]}>
-              <Text style={[styles.crowdText, { color: getCrowdColor(site.crowdLevel) }]}>
+            <View style={[styles.crowdBadge, { backgroundColor: hexToRgba(crowdColor, 0.2) }]}>
+              <Text style={[styles.crowdText, { color: crowdColor }]}>
                 {site.crowdLevel}
               </Text>
             </View>
           </View>
           
-          <View style={styles.metadataItem}>
+          <View style={[styles.metadataItem, { marginLeft: 16 }]}>
             <Text style={[styles.metadataLabel, { color: colors.textSecondary }]}>⭐</Text>
             <Text style={[styles.metadataValue, { color: colors.text }]}>{site.rating}</Text>
           </View>
@@ -156,16 +144,16 @@ const styles = StyleSheet.create({
   },
   metadata: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     marginBottom: 16,
   },
   metadataItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
   },
   metadataLabel: {
     fontSize: 16,
+    marginRight: 4,
   },
   metadataValue: {
     fontSize: 13,

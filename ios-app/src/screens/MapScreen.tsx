@@ -1,23 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import { MapViewComponent } from '../components/MapViewComponent'
 import { guadeloupeSites } from '../data/sites'
 import { useTheme } from '../contexts/ThemeContext'
+import { useVisitedSites } from '../contexts/VisitedSitesContext'
 import { useTranslation } from 'react-i18next'
 
 export const MapScreen: React.FC = () => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
-  const [visitedSites, setVisitedSites] = useState<string[]>([])
-
-  const toggleVisit = (siteId: string) => {
-    setVisitedSites((current) => {
-      if (current.includes(siteId)) {
-        return current.filter((id) => id !== siteId)
-      }
-      return [...current, siteId]
-    })
-  }
+  const { visitedSites, toggleVisit } = useVisitedSites()
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>

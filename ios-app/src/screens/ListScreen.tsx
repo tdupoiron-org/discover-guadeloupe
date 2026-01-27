@@ -11,22 +11,14 @@ import {
 import { SiteCard } from '../components/SiteCard'
 import { guadeloupeSites } from '../data/sites'
 import { useTheme } from '../contexts/ThemeContext'
+import { useVisitedSites } from '../contexts/VisitedSitesContext'
 import { useTranslation } from 'react-i18next'
 
 export const ListScreen: React.FC = () => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
-  const [visitedSites, setVisitedSites] = useState<string[]>([])
+  const { visitedSites, toggleVisit } = useVisitedSites()
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
-
-  const toggleVisit = (siteId: string) => {
-    setVisitedSites((current) => {
-      if (current.includes(siteId)) {
-        return current.filter((id) => id !== siteId)
-      }
-      return [...current, siteId]
-    })
-  }
 
   const filteredSites = guadeloupeSites.filter((site) => {
     if (filter === 'visited') return visitedSites.includes(site.id)
@@ -56,6 +48,7 @@ export const ListScreen: React.FC = () => {
               styles.filterButton,
               filter === 'all' && { backgroundColor: colors.primary },
               filter !== 'all' && { backgroundColor: colors.secondary },
+              { marginRight: 8, marginBottom: 8 },
             ]}
             onPress={() => setFilter('all')}
           >
@@ -76,6 +69,7 @@ export const ListScreen: React.FC = () => {
               styles.filterButton,
               filter === 'unvisited' && { backgroundColor: colors.primary },
               filter !== 'unvisited' && { backgroundColor: colors.secondary },
+              { marginRight: 8, marginBottom: 8 },
             ]}
             onPress={() => setFilter('unvisited')}
           >
@@ -97,6 +91,7 @@ export const ListScreen: React.FC = () => {
               styles.filterButton,
               filter === 'visited' && { backgroundColor: colors.primary },
               filter !== 'visited' && { backgroundColor: colors.secondary },
+              { marginBottom: 8 },
             ]}
             onPress={() => setFilter('visited')}
           >
@@ -185,9 +180,8 @@ const styles = StyleSheet.create({
   },
   filters: {
     flexDirection: 'row',
-    gap: 8,
-    marginBottom: 20,
     flexWrap: 'wrap',
+    marginBottom: 20,
   },
   filterButton: {
     paddingVertical: 10,
@@ -236,6 +230,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   sitesList: {
-    gap: 16,
+    marginBottom: 16,
   },
 })

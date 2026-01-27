@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, Alert } from 'react-native'
 import MapView, { Marker, Callout, PROVIDER_DEFAULT } from 'react-native-maps'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import * as Location from 'expo-location'
 import { Site } from '../types/site'
 import { useTheme } from '../contexts/ThemeContext'
 import { useTranslation } from 'react-i18next'
+import { getMarkerColor } from '../utils/colors'
 
 interface MapViewComponentProps {
   sites: Site[]
@@ -12,7 +14,7 @@ interface MapViewComponentProps {
   onToggleVisit: (siteId: string) => void
 }
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 export const MapViewComponent: React.FC<MapViewComponentProps> = ({
   sites,
@@ -21,36 +23,36 @@ export const MapViewComponent: React.FC<MapViewComponentProps> = ({
 }) => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
-  const [location, setLocation] = useState<Location.LocationObject | null>(null)
+  const insets = useSafeAreaInsets()
+  const [locationError, setLocationError] = useState<string | null>(null)
 
   useEffect(() => {
     (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        return
-      }
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync()
+        if (status !== 'granted') {
+          setLocationError('Location permission denied')
+          return
+        }
 
-      const loc = await Location.getCurrentPositionAsync({})
-      setLocation(loc)
+        await Location.getCurrentPositionAsync({})
+      } catch (error) {
+        setLocationError('Error getting location')
+        console.error('Location error:', error)
+      }
     })()
   }, [])
 
-  const getMarkerColor = (site: Site, isVisited: boolean) => {
-    if (isVisited) return '#9ca3af'
-    switch (site.popularity) {
-      case 'must-see': return '#ef4444'
-      case 'popular': return '#f59e0b'
-      case 'hidden-gem': return '#10b981'
+  // Show alert if location access was denied
+  useEffect(() => {
+    if (locationError) {
+      Alert.alert(
+        'Location Access',
+        'Location permission is needed to show your position on the map.',
+        [{ text: 'OK' }]
+      )
     }
-  }
-
-  const getCrowdColor = (level: Site['crowdLevel']) => {
-    switch (level) {
-      case 'high': return colors.destructive
-      case 'medium': return colors.warning
-      case 'low': return colors.success
-    }
-  }
+  }, [locationError])
 
   return (
     <View style={styles.container}>
@@ -103,7 +105,7 @@ export const MapViewComponent: React.FC<MapViewComponentProps> = ({
                           {site.duration}
                         </Text>
                       </View>
-                      <View style={styles.calloutMetadataItem}>
+                      <View style={[styles.calloutMetadataItem, { marginLeft: 16 }]}>
                         <Text style={styles.calloutMetadataEmoji}>⭐</Text>
                         <Text style={[styles.calloutMetadataText, { color: colors.text }]}>
                           {site.rating}
@@ -163,8 +165,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width,
-    height: height - 160,
+    flex: 1,
+    width: '100%',
   },
   callout: {
     width: 280,
@@ -201,16 +203,15 @@ const styles = StyleSheet.create({
   },
   calloutMetadata: {
     flexDirection: 'row',
-    gap: 16,
     marginBottom: 12,
   },
   calloutMetadataItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
   },
   calloutMetadataEmoji: {
     fontSize: 14,
+    marginRight: 4,
   },
   calloutMetadataText: {
     fontSize: 12,

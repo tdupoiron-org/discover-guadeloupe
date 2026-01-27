@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { useColorScheme } from 'react-native'
 import * as SystemUI from 'expo-system-ui'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type ThemeMode = 'light' | 'dark' | 'system'
 
@@ -45,17 +46,50 @@ const darkColors = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
+const THEME_STORAGE_KEY = '@theme_mode'
+
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const systemColorScheme = useColorScheme()
-  const [themeMode, setThemeMode] = useState<ThemeMode>('system')
+  const [themeMode, setThemeModeState] = useState<ThemeMode>('system')
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Load theme preference on mount
+  useEffect(() => {
+    const loadThemeMode = async () => {
+      try {
+        const stored = await AsyncStorage.getItem(THEME_STORAGE_KEY)
+        if (stored && ['light', 'dark', 'system'].includes(stored)) {
+          setThemeModeState(stored as ThemeMode)
+        }
+      } catch (error) {
+        console.error('Error loading theme mode:', error)
+      } finally {
+        setIsLoaded(true)
+      }
+    }
+
+    loadThemeMode()
+  }, [])
+
+  // Save theme preference when it changes
+  const setThemeMode = async (mode: ThemeMode) => {
+    setThemeModeState(mode)
+    try {
+      await AsyncStorage.setItem(THEME_STORAGE_KEY, mode)
+    } catch (error) {
+      console.error('Error saving theme mode:', error)
+    }
+  }
   
   const theme = themeMode === 'system' ? (systemColorScheme || 'light') : themeMode
   const colors = theme === 'dark' ? darkColors : lightColors
 
   useEffect(() => {
-    // Set the system UI style based on theme
-    SystemUI.setBackgroundColorAsync(colors.background)
-  }, [theme, colors.background])
+    if (isLoaded) {
+      // Set the system UI style based on theme
+      SystemUI.setBackgroundColorAsync(colors.background)
+    }
+  }, [theme, colors.background, isLoaded])
 
   return (
     <ThemeContext.Provider value={{ theme, themeMode, setThemeMode, colors }}>

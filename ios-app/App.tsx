@@ -1,7 +1,9 @@
 import React from 'react'
+import { Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ThemeProvider, useTheme } from './src/contexts/ThemeContext'
+import { VisitedSitesProvider } from './src/contexts/VisitedSitesContext'
 import { ListScreen } from './src/screens/ListScreen'
 import { MapScreen } from './src/screens/MapScreen'
 import { SettingsScreen } from './src/screens/SettingsScreen'
@@ -30,7 +32,7 @@ function MainNavigator() {
           component={ListScreen}
           options={{
             tabBarLabel: 'List',
-            tabBarIcon: ({ color }) => <span style={{ fontSize: 24 }}>📋</span>,
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>📋</Text>,
           }}
         />
         <Tab.Screen
@@ -38,7 +40,7 @@ function MainNavigator() {
           component={MapScreen}
           options={{
             tabBarLabel: 'Map',
-            tabBarIcon: ({ color }) => <span style={{ fontSize: 24 }}>🗺️</span>,
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🗺️</Text>,
           }}
         />
         <Tab.Screen
@@ -46,7 +48,7 @@ function MainNavigator() {
           component={SettingsScreen}
           options={{
             tabBarLabel: 'Settings',
-            tabBarIcon: ({ color }) => <span style={{ fontSize: 24 }}>⚙️</span>,
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>⚙️</Text>,
           }}
         />
       </Tab.Navigator>
@@ -57,7 +59,9 @@ function MainNavigator() {
 export default function App() {
   return (
     <ThemeProvider>
-      <MainNavigator />
+      <VisitedSitesProvider>
+        <MainNavigator />
+      </VisitedSitesProvider>
     </ThemeProvider>
   )
 }
