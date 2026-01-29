@@ -2,6 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { useTranslation } from 'react-i18next'
 import { ThemeProvider, useTheme } from './src/contexts/ThemeContext'
 import { VisitedSitesProvider } from './src/contexts/VisitedSitesContext'
 import { ListScreen } from './src/screens/ListScreen'
@@ -13,6 +14,7 @@ const Tab = createBottomTabNavigator()
 
 function MainNavigator() {
   const { colors } = useTheme()
+  const { t } = useTranslation()
 
   return (
     <NavigationContainer>
@@ -31,7 +33,7 @@ function MainNavigator() {
           name="List"
           component={ListScreen}
           options={{
-            tabBarLabel: 'List',
+            tabBarLabel: t('list'),
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 24, color }}>📋</Text>,
           }}
         />
@@ -39,7 +41,7 @@ function MainNavigator() {
           name="Map"
           component={MapScreen}
           options={{
-            tabBarLabel: 'Map',
+            tabBarLabel: t('map'),
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 24, color }}>🗺️</Text>,
           }}
         />
@@ -47,7 +49,7 @@ function MainNavigator() {
           name="Settings"
           component={SettingsScreen}
           options={{
-            tabBarLabel: 'Settings',
+            tabBarLabel: t('settings'),
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 24, color }}>⚙️</Text>,
           }}
         />
