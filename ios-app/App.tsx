@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ThemeProvider, useTheme } from './src/contexts/ThemeContext'
 import { VisitedSitesProvider } from './src/contexts/VisitedSitesContext'
+import { SitesProvider } from './src/contexts/SitesContext'
 import { ListScreen } from './src/screens/ListScreen'
 import { MapScreen } from './src/screens/MapScreen'
 import { SettingsScreen } from './src/screens/SettingsScreen'
@@ -59,9 +60,11 @@ function MainNavigator() {
 export default function App() {
   return (
     <ThemeProvider>
-      <VisitedSitesProvider>
-        <MainNavigator />
-      </VisitedSitesProvider>
+      <SitesProvider>
+        <VisitedSitesProvider>
+          <MainNavigator />
+        </VisitedSitesProvider>
+      </SitesProvider>
     </ThemeProvider>
   )
 }

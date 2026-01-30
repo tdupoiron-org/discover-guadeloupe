@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -7,16 +7,19 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
+  Modal,
 } from 'react-native'
 import { useTheme } from '../contexts/ThemeContext'
 import { useTranslation } from 'react-i18next'
 import Constants from 'expo-constants'
+import { SiteManagementScreen } from './SiteManagementScreen'
 
 type ThemeMode = 'light' | 'dark' | 'system'
 
 export const SettingsScreen: React.FC = () => {
   const { colors, theme, themeMode, setThemeMode } = useTheme()
   const { t, i18n } = useTranslation()
+  const [showSiteManagement, setShowSiteManagement] = useState(false)
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
@@ -96,6 +99,21 @@ export const SettingsScreen: React.FC = () => {
         </View>
 
         <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('site_management')}</Text>
+          <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <TouchableOpacity
+              style={styles.option}
+              onPress={() => setShowSiteManagement(true)}
+            >
+              <Text style={[styles.optionText, { color: colors.text }]}>
+                {t('manage_sites')}
+              </Text>
+              <Text style={[styles.chevron, { color: colors.textSecondary }]}>›</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('about')}</Text>
           <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <View style={styles.infoRow}>
@@ -115,6 +133,14 @@ export const SettingsScreen: React.FC = () => {
           </Text>
         </View>
       </ScrollView>
+
+      <Modal
+        visible={showSiteManagement}
+        animationType="slide"
+        presentationStyle="fullScreen"
+      >
+        <SiteManagementScreen onClose={() => setShowSiteManagement(false)} />
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -162,6 +188,10 @@ const styles = StyleSheet.create({
   checkmark: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  chevron: {
+    fontSize: 24,
+    fontWeight: '400',
   },
   infoRow: {
     flexDirection: 'row',

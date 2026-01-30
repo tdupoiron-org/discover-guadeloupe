@@ -1,15 +1,16 @@
 import React from 'react'
 import { View, Text, StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import { MapViewComponent } from '../components/MapViewComponent'
-import { guadeloupeSites } from '../data/sites'
 import { useTheme } from '../contexts/ThemeContext'
 import { useVisitedSites } from '../contexts/VisitedSitesContext'
+import { useSites } from '../contexts/SitesContext'
 import { useTranslation } from 'react-i18next'
 
 export const MapScreen: React.FC = () => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
   const { visitedSites, toggleVisit } = useVisitedSites()
+  const { sites } = useSites()
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -20,7 +21,7 @@ export const MapScreen: React.FC = () => {
       </View>
 
       <MapViewComponent
-        sites={guadeloupeSites}
+        sites={sites}
         visitedSites={visitedSites}
         onToggleVisit={toggleVisit}
       />

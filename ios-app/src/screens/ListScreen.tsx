@@ -9,26 +9,27 @@ import {
   StatusBar,
 } from 'react-native'
 import { SiteCard } from '../components/SiteCard'
-import { guadeloupeSites } from '../data/sites'
 import { useTheme } from '../contexts/ThemeContext'
 import { useVisitedSites } from '../contexts/VisitedSitesContext'
+import { useSites } from '../contexts/SitesContext'
 import { useTranslation } from 'react-i18next'
 
 export const ListScreen: React.FC = () => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
   const { visitedSites, toggleVisit } = useVisitedSites()
+  const { sites } = useSites()
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
 
-  const filteredSites = guadeloupeSites.filter((site) => {
+  const filteredSites = sites.filter((site) => {
     if (filter === 'visited') return visitedSites.includes(site.id)
     if (filter === 'unvisited') return !visitedSites.includes(site.id)
     return true
   })
 
-  const visitedCount = visitedSites.length
-  const totalCount = guadeloupeSites.length
-  const progressPercentage = (visitedCount / totalCount) * 100
+  const visitedCount = visitedSites.filter(id => sites.some(site => site.id === id)).length
+  const totalCount = sites.length
+  const progressPercentage = totalCount > 0 ? (visitedCount / totalCount) * 100 : 0
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
