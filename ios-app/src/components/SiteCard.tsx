@@ -9,17 +9,37 @@ interface SiteCardProps {
   site: Site
   isVisited: boolean
   onToggleVisit: (siteId: string) => void
+  userRating: number | null
+  onRatingChange: (siteId: string, rating: number) => void
 }
 
 const { width } = Dimensions.get('window')
 const cardWidth = width - 32
 
-export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVisit }) => {
+export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVisit, userRating, onRatingChange }) => {
   const { colors } = useTheme()
   const { t } = useTranslation()
 
   const crowdColor = getCrowdColor(site.crowdLevel, colors)
   const popularityEmoji = getPopularityEmoji(site.popularity)
+
+  const renderStars = () => {
+    return (
+      <View style={styles.starsContainer}>
+        {[1, 2, 3, 4, 5].map((star) => (
+          <TouchableOpacity
+            key={star}
+            onPress={() => onRatingChange(site.id, star)}
+            style={styles.starButton}
+          >
+            <Text style={[styles.starText, { color: userRating && star <= userRating ? colors.accent : colors.textSecondary }]}>
+              {userRating && star <= userRating ? '⭐' : '☆'}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    )
+  }
 
   return (
     <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -74,6 +94,11 @@ export const SiteCard: React.FC<SiteCardProps> = ({ site, isVisited, onToggleVis
             {isVisited ? t('mark_unvisited') : t('mark_visited')}
           </Text>
         </TouchableOpacity>
+
+        <View style={[styles.ratingSection, { borderTopColor: colors.border }]}>
+          <Text style={[styles.ratingLabel, { color: colors.textSecondary }]}>{t('your_rating')}</Text>
+          {renderStars()}
+        </View>
       </View>
     </View>
   )
@@ -178,5 +203,27 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     fontWeight: '600',
+  },
+  ratingSection: {
+    marginTop: 16,
+    paddingTop: 16,
+    borderTopWidth: 1,
+  },
+  ratingLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    marginBottom: 8,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  starsContainer: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  starButton: {
+    padding: 2,
+  },
+  starText: {
+    fontSize: 24,
   },
 })

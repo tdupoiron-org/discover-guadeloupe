@@ -11,6 +11,7 @@ import {
 import { SiteCard } from '../components/SiteCard'
 import { useTheme } from '../contexts/ThemeContext'
 import { useVisitedSites } from '../contexts/VisitedSitesContext'
+import { useRatingSites } from '../contexts/RatingSitesContext'
 import { useSites } from '../contexts/SitesContext'
 import { useTranslation } from 'react-i18next'
 
@@ -18,6 +19,7 @@ export const ListScreen: React.FC = () => {
   const { colors, theme } = useTheme()
   const { t } = useTranslation()
   const { visitedSites, toggleVisit } = useVisitedSites()
+  const { getRating, setRating } = useRatingSites()
   const { sites } = useSites()
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
 
@@ -148,6 +150,8 @@ export const ListScreen: React.FC = () => {
                 site={site}
                 isVisited={visitedSites.includes(site.id)}
                 onToggleVisit={toggleVisit}
+                userRating={getRating(site.id)}
+                onRatingChange={setRating}
               />
             ))}
           </View>

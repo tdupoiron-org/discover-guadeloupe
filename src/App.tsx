@@ -6,11 +6,13 @@ import { MapView } from '@/components/MapView'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, CheckCircle, SquaresFour, MapTrifold } from '@phosphor-icons/react'
+import { useSiteRatings } from '@/hooks/use-site-ratings'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
   const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
+  const { getRating, setRating } = useSiteRatings()
 
   const visited = visitedSites
 
@@ -22,6 +24,11 @@ function App() {
       }
       return [...current, siteId]
     })
+  }
+
+  // Handle rating change
+  const handleRatingChange = (siteId: string, rating: number) => {
+    setRating(siteId, rating)
   }
 
   // Filter sites based on visit status / Sehenswürdigkeiten nach Besuchsstatus filtern
@@ -151,6 +158,8 @@ function App() {
                 site={site}
                 isVisited={visited.includes(site.id)}
                 onToggleVisit={toggleVisit}
+                userRating={getRating(site.id)}
+                onRatingChange={handleRatingChange}
               />
             ))}
           </div>

@@ -13,3 +13,8 @@ export interface Site {
     lng: number
   }
 }
+
+export interface SiteRating {
+  siteId: string
+  rating: number // 1-5 stars
+}

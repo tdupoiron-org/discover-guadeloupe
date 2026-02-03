@@ -77,5 +77,6 @@
   "crowd_medium": "Medium",
   "crowd_high": "High",
   "latitude": "Latitude",
-  "longitude": "Longitude"
+  "longitude": "Longitude",
+  "your_rating": "Your Rating"
 }

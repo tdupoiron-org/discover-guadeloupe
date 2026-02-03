@@ -4,14 +4,17 @@ import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Clock, Users, Star, Fire, Sparkle, CheckCircle } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
+import { StarRating } from '@/components/StarRating'
 
 interface SiteCardProps {
   site: Site
   isVisited: boolean
   onToggleVisit: (siteId: string) => void
+  userRating: number | null
+  onRatingChange: (siteId: string, rating: number) => void
 }
 
-export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
+export function SiteCard({ site, isVisited, onToggleVisit, userRating, onRatingChange }: SiteCardProps) {
   const getCrowdBadgeVariant = (level: Site['crowdLevel']) => {
     switch (level) {
       case 'high':
@@ -111,6 +114,14 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
             <Clock weight="bold" className="w-4 h-4" />
             <span>{site.duration}</span>
           </div>
+        </div>
+
+        <div className="pt-3 border-t border-border">
+          <p className="text-xs text-muted-foreground mb-2 font-medium">Your Rating</p>
+          <StarRating 
+            rating={userRating} 
+            onRatingChange={(rating) => onRatingChange(site.id, rating)}
+          />
         </div>
       </div>
     </Card>
