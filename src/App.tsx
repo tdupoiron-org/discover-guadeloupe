@@ -1,14 +1,18 @@
 // Main App component for Guadeloupe discovery / Hauptkomponente für die Entdeckung von Guadeloupe
 import { useState } from 'react'
-import { guadeloupeSites } from '@/data/sites'
+import { useSites } from '@/hooks/use-sites'
 import { SiteCard } from '@/components/SiteCard'
 import { MapView } from '@/components/MapView'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, CheckCircle, SquaresFour, MapTrifold } from '@phosphor-icons/react'
 import { useSiteRatings } from '@/hooks/use-site-ratings'
+import { CreateSiteDialog } from '@/components/CreateSiteDialog'
+import { Toaster, toast } from 'sonner'
+import type { Site } from '@/types/site'
 
 function App() {
+  const { sites, isLoading, isError, createSite, updateSite, deleteSite } = useSites()
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
   const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
@@ -31,8 +35,35 @@ function App() {
     setRating(siteId, rating)
   }
 
+  const handleCreateSite = async (data: Omit<Site, 'id'>) => {
+    try {
+      await createSite(data)
+      toast.success('Site created successfully!')
+    } catch {
+      toast.error('Failed to create site')
+    }
+  }
+
+  const handleEditSite = async (id: string, data: Partial<Site>) => {
+    try {
+      await updateSite({ id, data })
+      toast.success('Site updated successfully!')
+    } catch {
+      toast.error('Failed to update site')
+    }
+  }
+
+  const handleDeleteSite = async (id: string) => {
+    try {
+      await deleteSite(id)
+      toast.success('Site deleted successfully!')
+    } catch {
+      toast.error('Failed to delete site')
+    }
+  }
+
   // Filter sites based on visit status / Sehenswürdigkeiten nach Besuchsstatus filtern
-  const filteredSites = guadeloupeSites.filter(site => {
+  const filteredSites = sites.filter(site => {
     if (filter === 'visited') return visited.includes(site.id)
     if (filter === 'unvisited') return !visited.includes(site.id)
     return true
@@ -40,8 +71,24 @@ function App() {
 
   // Calculate visit progress / Besuchsfortschritt berechnen
   const visitedCount = visited.length
-  const totalCount = guadeloupeSites.length
+  const totalCount = sites.length
   const progressPercentage = (visitedCount / totalCount) * 100
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-lg text-muted-foreground">Loading sites…</p>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-lg text-destructive">Failed to load sites. Please try again later.</p>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -84,6 +131,8 @@ function App() {
                   Map
                 </button>
               </div>
+
+              <CreateSiteDialog onCreate={handleCreateSite} />
 
               <div className="h-8 w-px bg-border" />
 
@@ -160,6 +209,8 @@ function App() {
                 onToggleVisit={toggleVisit}
                 userRating={getRating(site.id)}
                 onRatingChange={handleRatingChange}
+                onEdit={handleEditSite}
+                onDelete={handleDeleteSite}
               />
             ))}
           </div>
@@ -183,6 +234,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <Toaster richColors />
     </div>
   )
 }

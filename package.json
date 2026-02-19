@@ -9,7 +9,8 @@
         "build": "tsc -b --noCheck && vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "server": "json-server --watch db.json --port 3001"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
@@ -88,6 +89,7 @@
         "eslint-plugin-react-hooks": "^5.2.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^16.0.0",
+        "json-server": "^1.0.0-beta.6",
         "playwright": "^1.56.1",
         "tailwindcss": "^4.1.11",
         "typescript": "~5.7.2",
