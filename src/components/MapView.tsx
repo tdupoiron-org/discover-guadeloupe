@@ -121,9 +121,9 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
               position={[site.coordinates.lat, site.coordinates.lng]}
               icon={createMarkerIcon(isVisited, site.popularity)}
             >
-              <Popup maxWidth={320} className="site-popup">
-                <div className="p-2 space-y-3">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg -mx-2 -mt-2">
+              <Popup maxWidth={480} className="site-popup">
+                <div className="flex gap-3 p-2">
+                  <div className="relative w-40 min-h-[140px] flex-shrink-0 overflow-hidden rounded-lg -ml-2 -my-2">
                     <img 
                       src={site.image} 
                       alt={site.name}
@@ -131,17 +131,17 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
                     />
                     {isVisited && (
                       <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
-                        <div className="bg-white/95 rounded-full p-2 shadow-lg">
-                          <CheckCircle weight="fill" className="w-8 h-8 text-primary" />
+                        <div className="bg-white/95 rounded-full p-1.5 shadow-lg">
+                          <CheckCircle weight="fill" className="w-6 h-6 text-primary" />
                         </div>
                       </div>
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="flex-1 space-y-1.5 min-w-0">
                     <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-base leading-tight mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-sm leading-tight mb-0.5">
                           {site.name}
                         </h3>
                         <p className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -158,16 +158,16 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
                       >
                         <Checkbox 
                           checked={isVisited}
-                          className="w-5 h-5"
+                          className="w-4 h-4"
                         />
                       </button>
                     </div>
 
-                    <p className="text-sm text-foreground/80 line-clamp-3">
+                    <p className="text-xs text-foreground/80 line-clamp-2">
                       {site.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 pt-1">
+                    <div className="flex flex-wrap gap-1.5">
                       <Badge variant={getCrowdBadgeVariant(site.crowdLevel)} className="text-xs">
                         <Users weight="fill" className="w-3 h-3 mr-1" />
                         {site.crowdLevel}
@@ -178,7 +178,7 @@ export function MapView({ sites, visitedSites, onToggleVisit }: MapViewProps) {
                       </Badge>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-1 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Clock weight="bold" className="w-3.5 h-3.5" />
                         <span className="text-xs">{site.duration}</span>
