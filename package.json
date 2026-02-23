@@ -9,7 +9,9 @@
         "build": "tsc -b --noCheck && vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "playwright test",
+        "test:ui": "playwright test --ui"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
