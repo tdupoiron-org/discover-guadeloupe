@@ -27,10 +27,10 @@ Native iOS application optimized for iPhone 13 mini, available in the `ios-app/`
 - **Responsive design** for mobile and desktop (web) / Native iOS UI (mobile)
 - **Beautiful imagery** and detailed site descriptions
 - **Filter by visit status** (all, visited, unvisited)
-- **Map view** with OpenStreetMap integration
 - **Multi-language support** (English, French, German)
 - **Dark mode** support with automatic theme detection
-- **List and Map views** for browsing attractions
+- **List view** for browsing attractions on web
+- **List and Map views** for browsing attractions on iOS
 
 ## 🏖️ Location Categories:
 - Natural wonders (volcanoes, waterfalls, beaches)
