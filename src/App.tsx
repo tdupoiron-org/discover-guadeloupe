@@ -2,15 +2,13 @@
 import { useState } from 'react'
 import { guadeloupeSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
-import { MapView } from '@/components/MapView'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, CheckCircle, SquaresFour, MapTrifold } from '@phosphor-icons/react'
+import { MapPin, CheckCircle } from '@phosphor-icons/react'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
-  const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
 
   const visited = visitedSites
 
@@ -53,33 +51,6 @@ function App() {
 
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <div className="flex gap-2 p-1 bg-secondary rounded-full">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    viewMode === 'grid'
-                      ? 'bg-primary text-primary-foreground shadow-md'
-                      : 'text-secondary-foreground hover:bg-secondary/80'
-                  }`}
-                >
-                  <SquaresFour weight="fill" className="inline w-4 h-4 mr-1.5" />
-                  Grid
-                </button>
-                <button
-                  onClick={() => setViewMode('map')}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    viewMode === 'map'
-                      ? 'bg-primary text-primary-foreground shadow-md'
-                      : 'text-secondary-foreground hover:bg-secondary/80'
-                  }`}
-                >
-                  <MapTrifold weight="fill" className="inline w-4 h-4 mr-1.5" />
-                  Map
-                </button>
-              </div>
-
-              <div className="h-8 w-px bg-border" />
-
               <button
                 onClick={() => setFilter('all')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
@@ -127,13 +98,7 @@ function App() {
           </div>
         </header>
 
-        {viewMode === 'map' ? (
-          <MapView 
-            sites={filteredSites}
-            visitedSites={visitedSites}
-            onToggleVisit={toggleVisit}
-          />
-        ) : filteredSites.length === 0 ? (
+        {filteredSites.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
