@@ -2,13 +2,15 @@
 import { useState } from 'react'
 import { guadeloupeSites } from '@/data/sites'
 import { SiteCard } from '@/components/SiteCard'
+import { SiteMap } from '@/components/SiteMap'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, CheckCircle } from '@phosphor-icons/react'
+import { MapPin, CheckCircle, List, MapTrifold } from '@phosphor-icons/react'
 
 function App() {
   const [visitedSites, setVisitedSites] = useState<string[]>([])
   const [filter, setFilter] = useState<'all' | 'visited' | 'unvisited'>('all')
+  const [view, setView] = useState<'grid' | 'map'>('grid')
 
   const visited = visitedSites
 
@@ -82,6 +84,31 @@ function App() {
                 <CheckCircle weight="fill" className="inline w-4 h-4 mr-1.5" />
                 Visited ({visitedCount})
               </button>
+
+              <div className="ml-auto flex items-center gap-1 bg-secondary rounded-full p-1">
+                <button
+                  onClick={() => setView('grid')}
+                  className={`p-2 rounded-full transition-colors ${
+                    view === 'grid'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-secondary-foreground hover:bg-secondary/80'
+                  }`}
+                  aria-label="Grid view"
+                >
+                  <List weight="bold" className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setView('map')}
+                  className={`p-2 rounded-full transition-colors ${
+                    view === 'map'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-secondary-foreground hover:bg-secondary/80'
+                  }`}
+                  aria-label="Map view"
+                >
+                  <MapTrifold weight="bold" className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {visitedCount > 0 && (
@@ -98,7 +125,13 @@ function App() {
           </div>
         </header>
 
-        {filteredSites.length === 0 ? (
+        {view === 'map' ? (
+          <SiteMap
+            sites={filteredSites}
+            visitedSites={visitedSites}
+            onToggleVisit={toggleVisit}
+          />
+        ) : filteredSites.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
               {filter === 'visited' && visitedCount === 0
