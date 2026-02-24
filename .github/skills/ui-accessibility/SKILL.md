@@ -21,6 +21,12 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
   - Use `browser_snapshot` as the primary capture method for accessibility tree context.
   - Use `take_screenshot` to record the visual state of failing or ambiguous elements.
   - Save screenshots alongside the report when generating a PDF report.
+- **PDF generation**: Use the shell script `reports/_gen-pdf.sh` to convert the filled report markdown into a PDF.
+  - The script requires **Pandoc** (`brew install pandoc`) and **BasicTeX** (`brew install --cask basictex`) with XeLaTeX.
+  - It pre-processes Unicode/emoji characters that LaTeX cannot render, then calls `pandoc` with XeLaTeX, numbered sections, a clickable table of contents, `breezedark` syntax highlighting, Helvetica Neue body font, and Menlo monospace font.
+  - Run it from any directory: `bash .github/skills/ui-accessibility/reports/_gen-pdf.sh`
+  - The script always overwrites the PDF at the path defined by the `OUT` variable inside the script (i.e., `reports/YYYY-MM-DD-accessibility-report.pdf`).
+  - If the script does not yet exist for the current audit date, copy and update `_gen-pdf.sh` from a previous run, changing the `SRC` and `OUT` date suffix.
 
 ## Non-Goals
 - Redesigning visual identity.
@@ -65,8 +71,11 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
 5. **Report**
    - Summarize issues found, fixes applied, residual risks, and next checks.
    - For a markdown report, use `templates/accessibility-report.md`.
-   - For a PDF report, use `templates/accessibility-report-pdf.md`; embed any screenshots captured during the audit.
-   - **PDF output location**: Save the generated PDF under `.github/skills/ui-accessibility/reports/` and name it after the audit date using the pattern `YYYY-MM-DD-accessibility-report.pdf` (e.g., `2026-02-24-accessibility-report.pdf`). Create the `reports/` directory if it does not exist. Save any accompanying screenshots in the same folder using the pattern `YYYY-MM-DD-screenshot-<N>.png`.
+   - For a PDF report:
+     1. Fill `templates/accessibility-report-pdf.md` with all findings and save it as `reports/YYYY-MM-DD-accessibility-report.pdf.md`.
+     2. Save Playwright screenshots in the same folder using the pattern `YYYY-MM-DD-screenshot-<N>.png`.
+     3. Run `bash .github/skills/ui-accessibility/reports/_gen-pdf.sh` to produce the final PDF via Pandoc + XeLaTeX (see **Tools** section for prerequisites).
+   - **PDF output location**: `reports/YYYY-MM-DD-accessibility-report.pdf`. Create the `reports/` directory if it does not exist.
 
 ## Severity Model
 - **P0**: Blocks core interaction for keyboard/screen reader users.
@@ -94,7 +103,8 @@ Every run should provide:
 - Validation commands run and outcomes.
 - Follow-up recommendations limited to highest-value next steps.
 - (PDF reports only) Embedded screenshots captured via Playwright MCP, one per significant P0/P1 finding.
-- (PDF reports only) File saved as `.github/skills/ui-accessibility/reports/YYYY-MM-DD-accessibility-report.pdf`.
+- (PDF reports only) Markdown source saved as `reports/YYYY-MM-DD-accessibility-report.pdf.md`.
+- (PDF reports only) PDF produced by running `bash .github/skills/ui-accessibility/reports/_gen-pdf.sh` and saved as `reports/YYYY-MM-DD-accessibility-report.pdf`.
 
 ## References
 - **WCAG 2.1** – Web Content Accessibility Guidelines: https://www.w3.org/TR/WCAG21/
