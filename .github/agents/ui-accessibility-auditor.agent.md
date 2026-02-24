@@ -1,5 +1,6 @@
 ---
 name: 📊 UI Accessibility Auditor
+description: This custom agent audits UI accessibility for the Discover Guadeloupe repository.
 agents: ["Plan", "test-specialist", "🐛 GitHub Issue Manager"]
 model: Claude Sonnet 4.6 (copilot)
 tools: [read, agent, search, 'playwright/*']
