@@ -9,7 +9,9 @@
         "build": "tsc -b --noCheck && vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "api:dev": "npm run dev --workspace=packages/api",
+        "api:build": "npm run build --workspace=packages/api"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
