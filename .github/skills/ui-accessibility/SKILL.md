@@ -14,6 +14,13 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
 - Target scope: file(s), component(s), route(s), or whole app.
 - Constraints: minimal/MVP vs broader hardening.
 - Optional baseline: known issues, audit output, or priority level.
+- Optional report format: markdown (default) or PDF (uses `templates/accessibility-report-pdf.md`).
+
+## Tools
+- **Playwright MCP**: Use the `browser_snapshot` and `take_screenshot` tools (via the Playwright MCP) to capture page state during the audit. Screenshots provide visual evidence for findings and can be embedded in PDF reports.
+  - Use `browser_snapshot` as the primary capture method for accessibility tree context.
+  - Use `take_screenshot` to record the visual state of failing or ambiguous elements.
+  - Save screenshots alongside the report when generating a PDF report.
 
 ## Non-Goals
 - Redesigning visual identity.
@@ -40,6 +47,7 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
    - State communication: checked/expanded/selected states are exposed.
    - Media/text alternatives: meaningful `alt`, decorative media marked appropriately.
    - Dynamic updates: loading/progress/filter changes announced where needed.
+   - **Screenshot capture**: If the app is running locally, use `browser_snapshot` (Playwright MCP) to capture the accessibility tree and `take_screenshot` to record the visual state of key issues.
 
 3. **Implement Focused Fixes**
    - Replace clickable non-buttons with `<button>`/`<a>` as appropriate.
@@ -55,7 +63,9 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
 
 5. **Report**
    - Summarize issues found, fixes applied, residual risks, and next checks.
-   - Use the template in `templates/accessibility-report.md`.
+   - For a markdown report, use `templates/accessibility-report.md`.
+   - For a PDF report, use `templates/accessibility-report-pdf.md`; embed any screenshots captured during the audit.
+   - **PDF output location**: Save the generated PDF under `.github/skills/ui-accessibility/reports/` and name it after the audit date using the pattern `YYYY-MM-DD-accessibility-report.pdf` (e.g., `2026-02-24-accessibility-report.pdf`). Create the `reports/` directory if it does not exist. Save any accompanying screenshots in the same folder using the pattern `YYYY-MM-DD-screenshot-<N>.png`.
 
 ## Severity Model
 - **P0**: Blocks core interaction for keyboard/screen reader users.
@@ -82,3 +92,5 @@ Every run should provide:
 - Exact files changed.
 - Validation commands run and outcomes.
 - Follow-up recommendations limited to highest-value next steps.
+- (PDF reports only) Embedded screenshots captured via Playwright MCP, one per significant P0/P1 finding.
+- (PDF reports only) File saved as `.github/skills/ui-accessibility/reports/YYYY-MM-DD-accessibility-report.pdf`.

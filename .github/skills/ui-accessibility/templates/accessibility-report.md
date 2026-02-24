@@ -19,7 +19,7 @@
 ### P3 (Low)
 - 
 
-## Changes Applied
+## Changes to apply
 - [ ] Semantic element corrections
 - [ ] Label/name fixes
 - [ ] Keyboard access fixes
@@ -27,7 +27,7 @@
 - [ ] Alt text updates
 - [ ] Dynamic announcement improvements
 
-### Modified Files
+### Files to modify
 - 
 
 ## Validation
