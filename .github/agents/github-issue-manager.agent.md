@@ -1,5 +1,6 @@
 ---
 name: 🐛 GitHub Issue Manager
+description: This custom agent manages GitHub issues for the Discover Guadeloupe repository.
 agents: ["*"]
 model: Claude Sonnet 4.6 (copilot)
 tools: [read, agent, search, 'github/*']
