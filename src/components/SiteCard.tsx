@@ -45,9 +45,10 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
       )}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
+        {/* ♿ A11Y BUG #1 — Missing alt text: screen readers announce "image" with no context */}
         <img 
           src={site.image} 
-          alt={site.name}
+          alt=""
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -83,23 +84,24 @@ export function SiteCard({ site, isVisited, onToggleVisit }: SiteCardProps) {
       <div className="p-4 space-y-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-lg leading-tight mb-1 line-clamp-2">
+            {/* ♿ A11Y BUG #3 — Critically low contrast: light gray text on white card fails WCAG AA (ratio < 3:1) */}
+            <h3 className="font-semibold text-lg leading-tight mb-1 line-clamp-2 text-gray-200">
               {site.name}
             </h3>
             <p className="text-xs text-muted-foreground uppercase tracking-wide">
               {site.category}
             </p>
           </div>
-          <button
+          {/* ♿ A11Y BUG #2 — Non-semantic element: div is not reachable by keyboard (Tab key) and has no role or label */}
+          <div
             onClick={() => onToggleVisit(site.id)}
-            className="flex-shrink-0 mt-1 hover:scale-110 transition-transform"
-            aria-label={isVisited ? 'Mark as not visited' : 'Mark as visited'}
+            className="flex-shrink-0 mt-1 hover:scale-110 transition-transform cursor-pointer"
           >
             <Checkbox 
               checked={isVisited}
               className="w-6 h-6"
             />
-          </button>
+          </div>
         </div>
 
         <p className="text-sm text-foreground/80 line-clamp-3">
