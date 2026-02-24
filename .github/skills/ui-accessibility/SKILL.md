@@ -33,6 +33,7 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
 3. Keep diffs small and strongly typed.
 4. Reuse existing UI primitives first.
 5. Verify with keyboard-only navigation logic and lint/type checks.
+6. Apply [WCAG 2.1](https://www.w3.org/TR/WCAG21/) success criteria as the authoritative reference for accessibility best practices.
 
 ## Execution Workflow
 1. **Scope & Inventory**
@@ -94,3 +95,6 @@ Every run should provide:
 - Follow-up recommendations limited to highest-value next steps.
 - (PDF reports only) Embedded screenshots captured via Playwright MCP, one per significant P0/P1 finding.
 - (PDF reports only) File saved as `.github/skills/ui-accessibility/reports/YYYY-MM-DD-accessibility-report.pdf`.
+
+## References
+- **WCAG 2.1** – Web Content Accessibility Guidelines: https://www.w3.org/TR/WCAG21/

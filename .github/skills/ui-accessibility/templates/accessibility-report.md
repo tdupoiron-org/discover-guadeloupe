@@ -19,22 +19,25 @@
 ### P3 (Low)
 - 
 
-## Changes to apply
-- [ ] Semantic element corrections
-- [ ] Label/name fixes
-- [ ] Keyboard access fixes
-- [ ] ARIA state/attribute fixes
-- [ ] Alt text updates
-- [ ] Dynamic announcement improvements
+## Required Remediations
 
-### Files to modify
+### Must fix (P0/P1)
+- [ ] 
+
+### Should fix (P2)
+- [ ] 
+
+### Nice to fix (P3)
+- [ ] 
+
+### Files that need to be modified
 - 
 
-## Validation
-- Commands run:
-  - `npm run lint`
-  - `npm run build`
-- Result summary:
+## How to Validate (after fixes are applied)
+- Run `npm run lint` and confirm no new errors
+- Run `npm run build` and confirm successful build
+- Use a screen reader (VoiceOver / NVDA) to verify affected components
+- Run an automated tool (axe, Lighthouse) and confirm resolved findings
 
 ## Risks / Deferred Items
 - 
