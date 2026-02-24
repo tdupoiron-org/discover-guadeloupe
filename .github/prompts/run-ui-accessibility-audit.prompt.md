@@ -1,5 +1,5 @@
 ---
-agent: UI Accessibility Auditor
+agent: 📊 UI Accessibility Auditor
 ---
 
 # Run UI Accessibility Audit
