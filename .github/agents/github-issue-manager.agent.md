@@ -6,27 +6,11 @@ tools: [read, agent, search, 'github/*']
 handoffs:
   - label: Assign to Copilot
     agent: agent
-    prompt: |
-      Assign the current issue to GitHub Copilot for automated resolution.
-      - Repository: `tdupoiron-org/discover-guadeloupe`
-      - Use the issue number identified in this session.
-      - Before assigning, confirm the issue has a clear title, a structured body (context, expected behaviour, actual behaviour, file path), and at least one label.
-      - If any of those are missing, update the issue first, then assign Copilot.
-      - Report the issue URL and confirm the assignment was successful.
+    prompt: "Assign the current issue to GitHub Copilot for automated resolution. Repository: `tdupoiron-org/discover-guadeloupe`. Use the issue number identified in this session. Before assigning, confirm the issue has a clear title, a structured body (context, expected behaviour, actual behaviour, file path), and at least one label. If any are missing, update the issue first, then assign Copilot. Report the issue URL and confirm the assignment was successful."
     send: false
   - label: Create pull request
     agent: agent
-    prompt: |
-      Create a pull request in `tdupoiron-org/discover-guadeloupe` to resolve the issue identified in this session.
-      - **Branch name**: `fix/<issue-number>-<kebab-case-title>` branching from `main`
-      - **PR title**: `fix: <issue title>` (conventional commit style)
-      - **PR body**:
-        - One-line summary of the change
-        - `Closes #<issue-number>`
-        - Files changed and what was modified
-        - How to verify the fix (steps or build command)
-      - Apply the same labels as the linked issue.
-      - Report the PR URL once created.
+    prompt: "Create a pull request in `tdupoiron-org/discover-guadeloupe` to resolve the issue identified in this session. Branch name: `fix/<issue-number>-<kebab-case-title>` from `main`. PR title: `fix: <issue title>` (conventional commit). PR body: one-line summary, `Closes #<issue-number>`, files changed and modifications, verification steps. Apply the same labels as the linked issue. Report the PR URL once created."
     send: false
 ---
 

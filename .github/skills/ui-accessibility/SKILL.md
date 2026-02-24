@@ -56,19 +56,7 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
    - Dynamic updates: loading/progress/filter changes announced where needed.
    - **Screenshot capture**: If the app is running locally, use `browser_snapshot` (Playwright MCP) to capture the accessibility tree and `take_screenshot` to record the visual state of key issues.
 
-3. **Implement Focused Fixes**
-   - Replace clickable non-buttons with `<button>`/`<a>` as appropriate.
-   - Add missing labels/`aria-label` for icon-only controls.
-   - Add or correct roles/states only if semantic elements cannot be used.
-   - Ensure keyboard handlers exist only where native behavior is unavailable.
-   - Preserve visual style and design tokens.
-
-4. **Validate**
-   - Run project checks (`npm run lint`, `npm run build` when available).
-   - Re-scan changed files for accidental regressions.
-   - Confirm no unrelated behavior changes.
-
-5. **Report**
+3. **Report**
    - Summarize issues found, fixes applied, residual risks, and next checks.
    - For a markdown report, use `templates/accessibility-report.md`.
    - For a PDF report:
@@ -98,10 +86,10 @@ This skill is optimized for component-driven apps using TypeScript + Tailwind + 
 ## Output Contract
 Every run should provide:
 - Scope covered.
-- Prioritized issue list (P0-P3).
-- Exact files changed.
-- Validation commands run and outcomes.
+- Prioritized issue list (P0–P3) with file, component, WCAG criterion, and suggested fix for each finding.
 - Follow-up recommendations limited to highest-value next steps.
+
+> **Audit-only**: This skill reports findings only. It does not apply code changes.
 - (PDF reports only) Embedded screenshots captured via Playwright MCP, one per significant P0/P1 finding.
 - (PDF reports only) Markdown source saved as `reports/YYYY-MM-DD-accessibility-report.pdf.md`.
 - (PDF reports only) PDF produced by running `bash .github/skills/ui-accessibility/reports/_gen-pdf.sh` and saved as `reports/YYYY-MM-DD-accessibility-report.pdf`.
