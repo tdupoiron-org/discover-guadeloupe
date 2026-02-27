@@ -2,37 +2,19 @@
 
 A personalized discovery app for first-time visitors to Guadeloupe, helping travelers explore the island's most captivating sites with curated information and visit tracking.
 
-## 📱 Platforms
-
-This repository contains two versions of the app:
-
-### Web Version
-Built with modern web technologies to provide an elegant and responsive experience for discovering the beautiful Caribbean island of Guadeloupe.
-
-### iOS App (NEW!)
-Native iOS application optimized for iPhone 13 mini, available in the `ios-app/` directory. Built with React Native and Expo.
-
-[📖 Read iOS App Documentation](ios-app/README.md)
-
 ## 🚀 What's Inside?
 - A clean, modern interface for exploring Guadeloupe's attractions
-- Pre-configured with Vite and React for fast development (web)
-- Beautiful UI components powered by Radix UI and Tailwind CSS (web)
-- Native iOS experience with React Native (iOS)
-- Interactive site tracking and filtering
-  
-## 🌴 Features:
+- Built with Vite, React, and Tailwind CSS for fast development
+- Beautiful UI components powered by Radix UI and shadcn/ui
+
+## 🌴 Features
 - **Curated list of must-see locations** in Guadeloupe (12 sites)
 - **Visit tracking** with progress indicators
-- **Responsive design** for mobile and desktop (web) / Native iOS UI (mobile)
+- **Responsive design** for mobile and desktop
 - **Beautiful imagery** and detailed site descriptions
 - **Filter by visit status** (all, visited, unvisited)
-- **Multi-language support** (English, French, German)
-- **Dark mode** support with automatic theme detection
-- **List view** for browsing attractions on web
-- **List and Map views** for browsing attractions on iOS
 
-## 🏖️ Location Categories:
+## 🏖️ Location Categories
 - Natural wonders (volcanoes, waterfalls, beaches)
 - Cultural sites and museums
 - Marine experiences (diving, snorkeling)
@@ -41,34 +23,16 @@ Native iOS application optimized for iPhone 13 mini, available in the `ios-app/`
 
 ## 🎯 Quick Start
 
-### Web Version
 ```bash
-npm install
-npm run dev
+npm install       # install dependencies
+npm run dev       # start dev server (Vite, default port 5173)
+npm run build     # build for production
+npm run lint      # lint with ESLint
+npm run preview   # preview production build
 ```
-
-### iOS Version
-```bash
-cd ios-app
-npm install
-npm start
-# Then press 'i' for iOS simulator or scan QR code with Expo Go
-```
-
-[📖 iOS Getting Started Guide](ios-app/GETTING_STARTED.md)
-
-## 📱 iOS App Features
-
-The iOS app includes all features from the web version plus:
-- **Native iOS experience** optimized for iPhone 13 mini
-- **Tab-based navigation** for easy switching between views
-- **Settings screen** for theme and language preferences
-- **Geolocation support** showing your current location on the map
-- **Offline-ready** with cached site data
-- **Smooth animations** and native gestures
 
 ## 🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+No problem! If you were just checking things out and don't need to keep this code:
 
 - Simply delete your Spark.
 - Everything will be cleaned up — no traces left behind.
